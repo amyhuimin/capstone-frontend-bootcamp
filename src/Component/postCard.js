@@ -17,21 +17,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CardOverflow from "@mui/joy/CardOverflow";
 import Divider from "@mui/joy/Divider";
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import Button from "@mui/material/Button";
+import { Link } from "@mui/material";
 
 const PostCard = () => {
   const [userData, setUserData] = useState({
@@ -44,13 +31,15 @@ const PostCard = () => {
   );
   const [request, setRequest] = useState("");
   const [postData, setPostData] = useState({
-    text: "test test",
+    text: "test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ",
     videoURL: "",
     pictureURL: "",
+    readMore: false,
   });
+
   const [tags, setTags] = useState({
-    tag1: "",
-    tag2: "",
+    tag1: "CleanTech",
+    tag2: "Technology",
     tag3: "",
   });
   const [numFollow, setNumFollow] = useState(0);
@@ -61,17 +50,74 @@ const PostCard = () => {
     setExpanded(!expanded);
   };
 
+  /* const getDate = async () => {
+try {
+  await axios.get()
+}
+catch (err)
+console.log(err)
+  } */
+
+  const handleFollowPostChange = () => {
+    setFollowPost((prevState) => !prevState);
+    if (followPost) {
+      setNumFollow((prev) => prev + 1);
+    }
+    if (!followPost && followPost > 0) {
+      //error in minusing following number
+      setNumFollow((prev) => prev - 1);
+    }
+  };
+
+  const onFollowPostSubmit = () => {};
+  // follow post = what to do
+  //unfollow post= what to do
+
+  useEffect(() => {
+    handleFollowPostChange();
+  }, []);
+
+  /* const handleReadMore = (
+    <div>
+      <p>text text text text text text text text text text text</p>
+    </div>
+  );
+  const linkName = postData.readMore ? "Read Less" : "Read More"; */
+
   //add axios.get to get post data
   //add axios.post to send new comments
 
+  const [readMore, setReadMore] = useState(false);
+  const extraContent = (
+    <div>
+      <p className="extra-content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui,
+        consectetur neque ab porro quasi culpa nulla rerum quis minus
+        voluptatibus sed hic ad quo sint, libero commodi officia aliquam!
+        Maxime.
+      </p>
+    </div>
+  );
+  const linkName = readMore ? "Read Less << " : "Read More >> ";
+
+  const handleReadMore = (event) => {
+    event.preventDefault();
+    setReadMore((prevState) => !prevState);
+  };
+
   return (
     <div>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 500 }}>
         <CardHeader
           action={
-            <IconButton aria-label="followPost">
-              <MoreVertIcon />
-            </IconButton>
+            <Button
+              variant="outlined"
+              size="small"
+              sx={{ width: 5, textTransform: "none", padding: 0 }}
+              onClick={handleFollowPostChange}
+            >
+              {followPost ? "Follow" : "Following"}
+            </Button>
           }
           title={ideaName}
           subheader={oneLineDes}
@@ -87,32 +133,26 @@ const PostCard = () => {
           <Typography variant="body2" align="left" sx={{ mt: -3 }}>
             {userData.name}
           </Typography>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  display: "-webkit-box",
-                }}
-              >
-                {postData.text}
-              </Typography>
-            </CardContent>
-          </Collapse>
-          {/* <CardActions disableSpacing> */}
-          <CardActions>
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
+
+          <CardContent>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+              }}
             >
-              <ExpandMoreIcon />
-            </ExpandMore>
-          </CardActions>
+              <div>
+                {readMore && extraContent}
+                <Link href="/" onClick={handleReadMore}>
+                  {linkName}
+                </Link>
+              </div>
+            </Typography>
+          </CardContent>
+
           {/* <CardMedia
           component="img"
           height="194"
@@ -122,12 +162,9 @@ const PostCard = () => {
         </CardContent>
 
         <CardActions disableSpacing>
-          <IconButton aria-label="tag">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="tag">
-            <ShareIcon />
-          </IconButton>
+          <Button variant="soft">{tags.tag1}</Button>
+
+          <Button variant="soft">{tags.tag2}</Button>
           {/*  <CardOverflow
             variant="soft"
             sx={{
@@ -142,7 +179,7 @@ const PostCard = () => {
             level="body3"
             sx={{ fontWeight: "md", color: "text.secondary" }}
           >
-            6.3k views
+            {numFollow} Following
           </Typography>
           {/*   <Divider orientation="vertical" /> */}
           {/* </CardOverflow> */}
