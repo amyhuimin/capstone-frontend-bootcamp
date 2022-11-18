@@ -88,21 +88,11 @@ console.log(err)
   //add axios.post to send new comments
 
   const [readMore, setReadMore] = useState(false);
-  const extraContent = (
-    <div>
-      <p className="extra-content">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui,
-        consectetur neque ab porro quasi culpa nulla rerum quis minus
-        voluptatibus sed hic ad quo sint, libero commodi officia aliquam!
-        Maxime.
-      </p>
-    </div>
-  );
-  const linkName = readMore ? "Read Less << " : "Read More >> ";
+  const linkName = readMore ? "Show Less" : "...Read More";
 
   const handleReadMore = (event) => {
     event.preventDefault();
-    setReadMore((prevState) => !prevState);
+    setReadMore(!readMore);
   };
 
   return (
@@ -144,12 +134,11 @@ console.log(err)
                 display: "-webkit-box",
               }}
             >
-              <div>
-                {readMore && extraContent}
-                <Link href="/" onClick={handleReadMore}>
-                  {linkName}
-                </Link>
-              </div>
+              <p>
+                {!readMore ? postData.text.slice(0, 150) : postData.text}
+
+                <Link onClick={handleReadMore}>{linkName}</Link>
+              </p>
             </Typography>
           </CardContent>
 
