@@ -1,7 +1,6 @@
 import React from "react";
-import LeftNavBar from "./components/LeftNavBar";
-import PostCard from "./components/postCard";
-import RightNewsBar from "./components/RightNewsBar";
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -27,24 +26,16 @@ const queryClientConfig = {
 
 const queryClient = new QueryClient(queryClientConfig);
 
-function App() {
+const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <div className="landingPage">
-          <div className="LeftnavBar">
-            <LeftNavBar />
-          </div>
-          <div className="postFeed">
-            <PostCard />
-          </div>
-          <div className="newsFeed">
-            <RightNewsBar />
-          </div>
-        </div>
-      </div>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    <div className="App">
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </div>
   );
-}
+};
 export default App;

@@ -31,7 +31,7 @@ function RightNewsBar() {
               id="country-select"
               options={countries}
               autoHighlight
-              onInputChange={(event, option) =>
+              onChange={(event, option) =>
                 setCountry(option.code.toLowerCase())
               }
               getOptionLabel={(option) => option.label}
