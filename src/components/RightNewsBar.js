@@ -25,7 +25,7 @@ function RightNewsBar() {
     const { articles } = data.data;
     return (
       <div className="rightNewsBar">
-        <Box bgcolor="white">
+        <Box bgcolor="white" style={{ borderRadius: 2 }}>
           <div id="Countryselect">
             <Autocomplete
               id="country-select"
@@ -62,16 +62,18 @@ function RightNewsBar() {
               )}
             />
           </div>
-          {articles.map((article) => {
-            return (
-              <NewsCard
-                key={article.url}
-                url={article.url}
-                imgurl={article.urlToImage}
-                headline={article.description}
-              />
-            );
-          })}
+          <div className="newsbarscroll">
+            {articles.map((article) => {
+              return (
+                <NewsCard
+                  key={article.url}
+                  url={article.url}
+                  imgurl={article.urlToImage}
+                  headline={article.description}
+                />
+              );
+            })}
+          </div>
         </Box>
       </div>
     );

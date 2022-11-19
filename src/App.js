@@ -30,6 +30,7 @@ const App = () => {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
+        <div className="Navbar">Insert Navbar here</div>
         <Routes>
           <Route path="/" element={<LandingPage />} />
         </Routes>
