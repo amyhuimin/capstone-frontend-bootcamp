@@ -1,19 +1,15 @@
-.App {
-  text-align: center;
+.circle-img {
+  border-radius: 50%;
+  border: 3px solid #fff;
+  width: 50px;
+  height: 50px;
+  margin: 0px 10px 10px 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.row-followed-items {
+  display:flex; flex-direction:row;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.row-followed-items-details {
+  padding: 5px;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import LeftNavBar from "./components/LeftNavBar";
 import {
   QueryClient,
   QueryClientProvider,
@@ -28,17 +29,16 @@ const queryClientConfig = {
 
 const queryClient = new QueryClient(queryClientConfig);
 
-class App extends React.Component {
-  render() {
-    return (
-      // <QueryClientProvider client={queryClient} contextSharing={true}>
-      <div className="app">
-        <PostCard />
-      </div>
-      /* <ReactQueryDevtools initialIsOpen={true} />
+function App() {
+  return (
+    // <QueryClientProvider client={queryClient} contextSharing={true}>
+    <div className="app">
+      <LeftNavBar />
+      <PostCard />
+    </div>
+    /* <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider> */
-    );
-  }
+  );
 }
 
 export default App;
