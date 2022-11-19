@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../App.css";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
@@ -96,8 +97,8 @@ console.log(err)
   };
 
   return (
-    <div>
-      <Card sx={{ maxWidth: 500 }}>
+    <div className="PostCard">
+      <Card>
         <CardHeader
           action={
             <Button

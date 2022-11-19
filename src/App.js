@@ -33,8 +33,12 @@ function App() {
   return (
     // <QueryClientProvider client={queryClient} contextSharing={true}>
     <div className="landingPage">
-      <LeftNavBar className="navBar" />
-      <PostCard className="newsFeed" />
+      <div className="navBar">
+        <LeftNavBar />
+      </div>
+      <div className="newsFeed">
+        <PostCard />
+      </div>
     </div>
     /* <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider> */

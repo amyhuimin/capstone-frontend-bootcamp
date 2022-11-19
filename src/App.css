@@ -1,18 +1,27 @@
 .landingPage {
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  flex-flow: row;
+  background-size: cover;
+  background-position: center;
+  background-color: aqua;
 }
 
 .navBar {
-  display: flex;
-  flex-direction: column;
-  width: 33%;
+  margin-left: 15%;
+  margin-right: 1%;
+  padding-top: 1%;
+  width: 15%;
 }
 
 .newsFeed {
-  display: flex;
-  flex-direction: column;
-  padding-top: 2%;
-  width: 30%;
+  padding-top: 1%;
+  width: 33%;
+}
+
+.PostCard {
+  border-color: lightgray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1%;
+  box-shadow: 5px 5px grey;
 }
