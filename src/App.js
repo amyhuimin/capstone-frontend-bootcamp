@@ -1,12 +1,12 @@
 import React from "react";
 import LeftNavBar from "./components/LeftNavBar";
+import PostCard from "./components/postCard";
 import {
   QueryClient,
   QueryClientProvider,
   ReactQueryDevtools,
 } from "react-query";
 import "./App.css";
-import PostCard from "./Component/postCard";
 
 const queryClientConfig = {
   defaultOptions: {
@@ -32,9 +32,9 @@ const queryClient = new QueryClient(queryClientConfig);
 function App() {
   return (
     // <QueryClientProvider client={queryClient} contextSharing={true}>
-    <div className="app">
-      <LeftNavBar />
-      <PostCard />
+    <div className="landingPage">
+      <LeftNavBar className="navBar" />
+      <PostCard className="newsFeed" />
     </div>
     /* <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider> */

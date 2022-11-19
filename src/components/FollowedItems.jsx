@@ -1,14 +1,15 @@
 import React from "react";
 import Avatar from "./Avatar";
 import Detail from "./Detail";
+import "./cssFiles/FollowedIdeas.css";
 
 function FollowedItems(props) {
   return (
-    <div className="row-followed-items">
+    <div className="FollowedItems">
       <Avatar img={props.img} />
-      <div className="row-followed-items-details">
-        <Detail detailInfo={props.name} />
-        <Detail detailInfo={props.extra} />
+      <div className="FollowedItemsProps">
+        <Detail detailInfo={props.name} fontWeight={700} />
+        <Detail detailInfo={props.extra} fontWeight={200} />
       </div>
     </div>
   );

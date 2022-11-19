@@ -16,7 +16,7 @@ function createFollowedIdeas(followedIdea) {
 function FollowedIdeas() {
   return (
     <div>
-      <h1 className="heading">Followed Ideas</h1>
+      <h1 style={{ marginLeft: 10 }}>Followed Ideas</h1>
       {followedIdeas.map(createFollowedIdeas)}
     </div>
   );

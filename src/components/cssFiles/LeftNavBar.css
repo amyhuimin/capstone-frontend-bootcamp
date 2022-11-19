@@ -1,0 +1,17 @@
+.circle-img {
+  border-radius: 50%;
+  border: 3px solid #fff;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  margin: 0px 10px 10px 10px;
+}
+
+.row-followed-items {
+  display: flex;
+  flex-direction: row;
+}
+
+.row-followed-items-details {
+  padding: 5px;
+}

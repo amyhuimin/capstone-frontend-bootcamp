@@ -3,8 +3,9 @@ import FollowedIdeas from "./FollowedIdeas";
 import FollowedPosts from "./FollowedPosts";
 import MediaFollowings from "./MediaFollowings";
 import ProgressingIdeas from "./ProgressingIdeas";
+import "./cssFiles/LeftNavBar.css";
 
-import "../App.css"; 
+import "../App.css";
 
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";

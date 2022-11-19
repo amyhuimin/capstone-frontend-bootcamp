@@ -7,7 +7,7 @@ function createMediaFollowings(followedMedia) {
     <FollowedItems
       key={followedMedia.id}
       img={followedMedia.imgURL}
-      extra={followedMedia.mediaName}
+      name={followedMedia.mediaName}
     />
   );
 }
@@ -15,7 +15,7 @@ function createMediaFollowings(followedMedia) {
 function MediaFollowings() {
   return (
     <div>
-      <h1 className="heading">Media Followings</h1>
+      <h1 style={{ marginLeft: 10 }}>Media Followings</h1>
       {mediaFollowings.map(createMediaFollowings)}
     </div>
   );

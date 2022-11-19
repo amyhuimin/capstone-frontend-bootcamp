@@ -7,7 +7,7 @@ function createProgressingIdeas(progressingIdea) {
     <FollowedItems
       key={progressingIdea.id}
       img={progressingIdea.imgURL}
-      extra={progressingIdea.ideaName}
+      name={progressingIdea.ideaName}
     />
   );
 }
@@ -15,7 +15,7 @@ function createProgressingIdeas(progressingIdea) {
 function ProgressingIdeas() {
   return (
     <div>
-      <h1 className="heading">Progressing Ideas</h1>
+      <h1 style={{ marginLeft: 10 }}>Progressing Ideas</h1>
       {progressingIdeas.map(createProgressingIdeas)}
     </div>
   );

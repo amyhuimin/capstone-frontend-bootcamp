@@ -16,7 +16,7 @@ function createFollowedPosts(followedPost) {
 function FollowedPosts() {
   return (
     <div>
-      <h1 className="heading">Followed Posts</h1>
+      <h1 style={{ marginLeft: 10 }}>Followed Posts</h1>
       {followedPosts.map(createFollowedPosts)}
     </div>
   );

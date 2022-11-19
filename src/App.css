@@ -1,15 +1,18 @@
-.circle-img {
-  border-radius: 50%;
-  border: 3px solid #fff;
-  width: 50px;
-  height: 50px;
-  margin: 0px 10px 10px 10px;
+.landingPage {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
-.row-followed-items {
-  display:flex; flex-direction:row;
+.navBar {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
 }
 
-.row-followed-items-details {
-  padding: 5px;
+.newsFeed {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  width: 30%;
 }
