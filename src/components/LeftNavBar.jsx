@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 
 function LeftNavBar() {
   return (
-    <div className="LeftNavBar">
+    <div className="leftNavBar">
       <Box bgcolor="white">
         <div>
           <Button
