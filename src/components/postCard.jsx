@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import readMore from "./readMore";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
@@ -73,8 +74,8 @@ console.log(err)
   //add axios.post to send new comments
 
   return (
-    <div className="PostCard">
-      <Card>
+    <div>
+      <Card sx={{ maxWidth: 500 }}>
         <CardHeader
           action={
             <Button
