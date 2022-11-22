@@ -1,0 +1,76 @@
+const postData = [
+  {
+    date: "12 Dec 2022",
+    userPostId: 1,
+    user: "Jack Bauer",
+    ideaName: "Community app",
+    oneLinerDesr: "Helping ideas to grow from 0 to 1 through a community",
+    text: "I have an new idea for social media app but I have no idea how to start or where to begin. Will like to ask the community's advice on my first few steps. Should I get the prototype first or should I talk to users first?",
+    imgURL: null,
+    videoURL: null,
+    requestType: "Ask for comments",
+    numberFollowers: 20,
+    tag1: "Social Media",
+    tag2: "Technology",
+    tag3: null,
+  },
+  {
+    date: "01 Jun 2021",
+    userPostId: 4,
+    user: "Beyonce",
+    ideaName: "Toy with human interaction",
+    oneLinerDesr: "Making your favourite toy a true companion",
+    text: "Can anyone connect me to a toy enthuenthusiast? Wanted to find out more from him/her on their love of toys",
+    imgURL: null,
+    videoURL: null,
+    requestType: "Help Needed",
+    numberFollowers: 4,
+    tag1: "Toys",
+    tag2: null,
+    tag3: null,
+  },
+  {
+    date: "30 Apr 2022",
+    userPostId: 1,
+    user: "Chuck Norris",
+    ideaName: "Idea name text text",
+    oneLinerDesr:
+      "One liner text here ... Text text Text text Text text Text text ",
+    text: "Text text Text text Text text Text text Text text Text text Text text Text text Text text Text text ",
+    imgURL: null,
+    videoURL: null,
+    requestType: "Request Type",
+    numberFollowers: 109,
+    tag1: null,
+    tag2: null,
+    tag3: null,
+  },
+];
+
+const ideaPostData = [
+  {
+    title: "A NEW IDEA IS BORN!",
+    user: "Jack Bauer",
+    ideaId: 1,
+    ideaName: "Community app",
+    oneLinerDesr: "Helping ideas to grow from 0 to 1 through a community",
+    numberFollowers: 4,
+    tag1: "Social media",
+    tag2: "Technology",
+    tag3: null,
+  },
+  {
+    title: "A NEW IDEA IS BORN!",
+    user: "JungKook",
+    ideaId: 3,
+    ideaName: "Name Name Name Name Name",
+    oneLinerDesr:
+      "One liner text here ... Text text Text text Text text Text text ",
+    numberFollowers: 4,
+    tag1: "Food",
+    tag2: "Reformula",
+    tag3: "Health",
+  },
+];
+
+export { postData, ideaPostData };
