@@ -8,12 +8,12 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
 import Button from "@mui/material/Button";
-import { postData, ideaPostData } from "../PostSeedData";
-import ReadMore from "../ReadMore";
-import FollowButton from "../FollowButton";
+import { postData } from "../PostSeedData";
+import ReadMore from "./ReadMore";
+import FollowButton from "./FollowButton";
 import { userData } from "../userData";
 
-const PostCard = () => {
+const PostCard = (content) => {
   return (
     <div>
       <Card sx={{ maxWidth: 500 }}>
@@ -43,9 +43,7 @@ const PostCard = () => {
                 display: "-webkit-box",
               }}
             >
-              <p>
-                <ReadMore>{postData.text}</ReadMore>
-              </p>
+              <ReadMore content="text text text text text" />
             </Typography>
           </CardContent>
           {postData.imgURL ? (
@@ -53,7 +51,7 @@ const PostCard = () => {
               component="img"
               height="194"
               image={postData.imgURL}
-              alt="Paella dish"
+              alt="image"
             />
           ) : null}
           ;
@@ -61,8 +59,8 @@ const PostCard = () => {
             <CardMedia
               component="video"
               height="194"
-              src={postData.imgURL}
-              alt="Paella dish"
+              src={postData.videoURL}
+              alt="video"
             />
           ) : null}
         </CardContent>
@@ -77,7 +75,7 @@ const PostCard = () => {
           >
             {postData.numFollow} Following
           </Typography>
-        </CardActions>{" "}
+        </CardActions>
       </Card>
     </div>
   );

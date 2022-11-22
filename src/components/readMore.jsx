@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import { postData } from "../PostSeedData";
+//import { postData } from "../PostSeedData";
 
-const ReadMore = () => {
+const ReadMore = ({ content }) => {
   const [readMore, setReadMore] = useState(false);
-  const expansion = readMore ? "Show Less" : "...Read More";
+  const expansion = readMore ? " Show Less" : "...Read More";
+  const text = content;
 
-  const handleReadMore = (event) => {
-    event.preventDefault();
+  const toggleReadMore = () => {
     setReadMore(!readMore);
   };
 
   return (
     <div>
-      {readMore ? postData.text : postData.text.slice(0, 150)}
-      {/* <h2>{postData.text}</h2> */}
-      <span onClick={handleReadMore}>{expansion}</span>;
+      <p className="readMoreText">
+        {readMore ? text : text.slice(0, 100)}
+        {text.length < 101 ? null : (
+          <span onClick={toggleReadMore}>{expansion}</span>
+        )}
+      </p>
     </div>
   );
 };

@@ -3,9 +3,8 @@
   flex-flow: column;
   background-size: cover;
   background-position: center;
-  background-color: aqua;
+  background-color: rgba(0, 255, 255, 0.15);
   min-height: 105vh;
-  opacity: 5%;
 }
 
 .Navbar {

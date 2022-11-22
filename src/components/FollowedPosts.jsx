@@ -1,6 +1,6 @@
 import React from "react";
 import { followedPosts } from "../seedData";
-import FollowedItems from "./FollowedItems";
+import FollowedItems from "./PostItems";
 
 function createFollowedPosts(followedPost) {
   return (
