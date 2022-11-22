@@ -25,7 +25,7 @@ const PostCard = (content) => {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: grey[500] }} aria-label="recipe">
-              {userData.imgURL}
+              {userData[1].imgURL}
             </Avatar>
           }
         />
@@ -43,7 +43,7 @@ const PostCard = (content) => {
                 display: "-webkit-box",
               }}
             >
-              <ReadMore content="text text text text text" />
+              <ReadMore content={postData[1].text} />
             </Typography>
           </CardContent>
           {postData[1].imgURL ? (
