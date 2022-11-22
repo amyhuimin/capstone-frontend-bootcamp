@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import IdeasPage from "./components/IdeasPage";
 
 const queryClientConfig = {
   defaultOptions: {
@@ -31,8 +32,10 @@ const App = () => {
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <div className="Navbar">Insert Navbar here</div>
+        {/*replace line 33 with navbar here at this line */}
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/ideas" element={<IdeasPage />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>

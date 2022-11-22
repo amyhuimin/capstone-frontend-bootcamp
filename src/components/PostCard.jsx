@@ -15,12 +15,12 @@ import { userData } from "../userData";
 
 const PostCard = (content) => {
   return (
-    <div>
-      <Card sx={{ maxWidth: 500 }}>
+    <div className="PostCard">
+      <Card>
         <CardHeader
           action={<FollowButton />}
-          title={postData.ideaName}
-          subheader={postData.oneLineDes}
+          title={postData[1].ideaName}
+          subheader={postData[1].oneLineDes}
         />
         <CardHeader
           avatar={
@@ -31,7 +31,7 @@ const PostCard = (content) => {
         />
         <CardContent>
           <Typography variant="body2" align="left" sx={{ mt: -3 }}>
-            {userData.user}
+            {userData[1].user}
           </Typography>
           <CardContent>
             <Typography
@@ -46,34 +46,34 @@ const PostCard = (content) => {
               <ReadMore content="text text text text text" />
             </Typography>
           </CardContent>
-          {postData.imgURL ? (
+          {postData[1].imgURL ? (
             <CardMedia
               component="img"
               height="194"
-              image={postData.imgURL}
+              image={postData[1].imgURL}
               alt="image"
             />
           ) : null}
           ;
-          {postData.videoURL ? (
+          {postData[1].videoURL ? (
             <CardMedia
               component="video"
               height="194"
-              src={postData.videoURL}
+              src={postData[1].videoURL}
               alt="video"
             />
           ) : null}
         </CardContent>
         <CardActions disableSpacing>
-          <Button variant="soft">{postData.tag1}</Button>
-          <Button variant="soft">{postData.tag2}</Button>
-          <Button variant="soft">{postData.tag3}</Button>
+          <Button variant="soft">{postData[1].tag1}</Button>
+          <Button variant="soft">{postData[1].tag2}</Button>
+          <Button variant="soft">{postData[1].tag3}</Button>
 
           <Typography
             level="body3"
             sx={{ fontWeight: "md", color: "text.secondary" }}
           >
-            {postData.numFollow} Following
+            {postData[1].numberFollowers} Following
           </Typography>
         </CardActions>
       </Card>

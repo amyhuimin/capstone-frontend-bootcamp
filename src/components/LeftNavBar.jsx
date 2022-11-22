@@ -18,14 +18,14 @@ function LeftNavBar() {
         <div className="ActionsBtn">
           <ButtonGroup>
             <Button
-              sx={{ backgroundColor: "lightskyblue", color: "black" }}
+              sx={{ backgroundColor: "#FFCE35", color: "black" }}
               variant="outlined"
             >
               Save a new idea
             </Button>
             <br />
             <Button
-              sx={{ backgroundColor: "lightskyblue", color: "black" }}
+              sx={{ backgroundColor: "#FFCE35", color: "black" }}
               variant="outlined"
             >
               Founders Circle Link

@@ -1,8 +1,6 @@
 import React from "react";
 import Detail from "./Detail";
 import "./cssFiles/newsCard.css";
-import { Link } from "@mui/material";
-import { lightBlue, lightGreen } from "@mui/material/colors";
 
 function NewsCard(props) {
   if (
