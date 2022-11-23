@@ -6,6 +6,7 @@ import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import IdeasPage from "./components/IdeasPage";
 import TopNavBar from "./components/TopNavBar";
+// import customtheme from "./style/theme";
 
 const queryClientConfig = {
   defaultOptions: {
@@ -32,7 +33,9 @@ const App = () => {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <div className="Navbar"><TopNavBar/></div>
+        <div className="TopNavbar">
+          <TopNavBar/>
+        </div>
         {/*replace line 33 with navbar here at this line */}
         <Routes>
           <Route path="/" element={<LandingPage />} />

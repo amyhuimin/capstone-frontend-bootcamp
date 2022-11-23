@@ -3,10 +3,11 @@
   flex-flow: column;
   background-size: cover;
   background-position: center;
-  background-color: rgba(0, 255, 255, 0.15);
+  background-color: #FDFD96;
   min-height: 105vh;
 }
 
-.Navbar {
+.TopNavbar {
   position: relative;
+  background-color: black !important;
 }
