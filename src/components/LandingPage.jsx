@@ -11,7 +11,7 @@ export default function LandingPage() {
         <LeftNavBar />
       </div>
       <div className="postFeed">
-        <IdeaCard />
+        <PostCard />
       </div>
       <div className="newsFeed">
         <RightNewsBar />

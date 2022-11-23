@@ -11,45 +11,31 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import { userData } from "../userData";
 import "./cssFiles/IdeaCard.css";
 
-const Title = () => {
-  return (
-    <div>
-      {ideaData[1].ideaName}
-      <span>{ideaData[1].status}</span>
-    </div>
-  );
-};
-
 const IdeaCard = () => {
-  const [expanded, setExpanded] = useState("comments");
-
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
   return (
     <div className="postCard">
       <Card className="cards">
-        <span className="ideaCardDateCreated">
-          Generated: {ideaData[1].date}
-        </span>
+        <div className="ideaDate">
+          <span className="ideaCardDateCreated">
+            Generated: {ideaData[1].date}
+          </span>
+        </div>
         <CardHeader
           avatar={<Avatar src={ideaData[1].ideaProfileImgURL} />}
-          /* title={ideaData[1].ideaName} */
-          title={<Title />}
+          title={ideaData[1].ideaName}
           subheader={ideaData[1].oneLiner}
         />
         <div className="status">
-          <span className="statusLive">{ideaData[1].status}</span>
+          {ideaData[1].status === "Private" ? (
+            <span className="statusPrivate">{ideaData[1].status}</span>
+          ) : (
+            <span className="statusLive">{ideaData[1].status}</span>
+          )}
         </div>
       </Card>
-      <div>
-        <Accordion
-          className="ideaAccordion"
-          expanded={expanded === "comments"}
-          onChange={handleChange("comments")}
-          TransitionProps={{ unmountOnExit: true }}
-        >
-          <AccordionSummary aria-controls="panel1a-content">
+      <div className="ideaAccordion">
+        <Accordion TransitionProps={{ unmountOnExit: true }}>
+          <AccordionSummary aria-controls="panel1a-content" id="panel1d-header">
             <Typography sx={{ fontWeight: "md", color: "text.secondary" }}>
               {ideaData[1].comments} Comments
             </Typography>

@@ -51,7 +51,7 @@ const ideaData = [
     tag1: "Toys",
     tag2: null,
     tag3: null,
-    status: "Live",
+    status: "Private",
     numberFollowers: 0,
     comments: 10,
   },
