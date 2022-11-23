@@ -15,20 +15,14 @@ import { userData } from "../userData";
 
 const PostCard = (content) => {
   return (
-    <div className="PostCard">
-      <Card>
+    <div className="postCard">
+      <Card className="cards">
         <CardHeader
           action={<FollowButton />}
           title={postData[1].ideaName}
-          subheader={postData[1].oneLineDes}
+          subheader={postData[1].oneLiner}
         />
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: grey[500] }} aria-label="recipe">
-              {userData[1].imgURL}
-            </Avatar>
-          }
-        />
+        <CardHeader avatar={<Avatar src={userData[1].imgURL} />} />
         <CardContent>
           <Typography variant="body2" align="left" sx={{ mt: -3 }}>
             {userData[1].user}

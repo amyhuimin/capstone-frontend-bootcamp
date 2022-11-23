@@ -1,0 +1,27 @@
+.statusPrivate {
+  display: flex;
+  color: #ffce35;
+  font-size: 14px;
+  /*   background-color: #ffcaca; */
+  background-position: 1%;
+  padding: 10px;
+  /*   border-radius: 5px 5px 5px; */
+  border: 1px solid #ffce35;
+  /* align-items: center; */
+  position: relative;
+  width: 8%;
+}
+
+.statusLive {
+  display: flex;
+  color: #ffffff;
+  font-size: 14px;
+  background-color: #ffce35;
+  background-position: 1%;
+  padding: 10px;
+  /*   border-radius: 5px 5px 5px; */
+  border: 1px solid #ffce35;
+  align-items: center;
+  position: relative;
+  width: 8%;
+}

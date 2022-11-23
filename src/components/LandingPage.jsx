@@ -1,5 +1,6 @@
 import LeftNavBar from "./LeftNavBar";
 import PostCard from "./PostCard";
+import IdeaCard from "./IdeaCard";
 import RightNewsBar from "./RightNewsBar";
 import "./cssFiles/landingPage.css";
 
@@ -10,7 +11,7 @@ export default function LandingPage() {
         <LeftNavBar />
       </div>
       <div className="postFeed">
-        <PostCard />
+        <IdeaCard />
       </div>
       <div className="newsFeed">
         <RightNewsBar />
