@@ -4,7 +4,7 @@ const postData = [
     userPostId: 1,
     user: "Jack Bauer",
     ideaName: "Community app",
-    oneLinerDesr: "Helping ideas to grow from 0 to 1 through a community",
+    oneLiner: "Helping ideas to grow from 0 to 1 through a community",
     text: "I have an new idea for social media app but I have no idea how to start or where to begin. Will like to ask the community's advice on my first few steps. Should I get the prototype first or should I talk to users first?",
     imgURL: null,
     videoURL: null,
@@ -19,7 +19,7 @@ const postData = [
     userPostId: 4,
     user: "Beyonce",
     ideaName: "Toy with human interaction",
-    oneLinerDesr: "Making your favourite toy a true companion",
+    oneLiner: "Making your favourite toy a true companion",
     text: "Can anyone connect me to a toy enthuenthusiast? Wanted to find out more from him/her on their love of toys",
     imgURL: null,
     videoURL: null,
@@ -34,7 +34,7 @@ const postData = [
     userPostId: 1,
     user: "Chuck Norris",
     ideaName: "Idea name text text",
-    oneLinerDesr:
+    oneLiner:
       "One liner text here ... Text text Text text Text text Text text ",
     text: "Text text Text text Text text Text text Text text Text text Text text Text text Text text Text text ",
     imgURL: null,

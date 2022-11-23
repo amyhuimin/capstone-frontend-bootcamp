@@ -1,5 +1,6 @@
 import LeftNavBar from "./LeftNavBar";
 import PostCard from "./PostCard";
+import IdeaCard from "./IdeaCard";
 import RightNewsBar from "./RightNewsBar";
 import "./cssFiles/landingPage.css";
 
