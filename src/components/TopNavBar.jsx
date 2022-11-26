@@ -21,6 +21,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import LeftNavBar from "./LeftNavBar";
 import "./cssFiles/LeftNavBar.css";
+import { width } from "@mui/system";
+import { Hidden } from "@mui/material";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -339,14 +341,18 @@ export default function PrimarySearchAppBar(prop) {
         </Toolbar>
       </AppBar>
       <Dialog
+        fullScreen
         open={leftNavBarOpen}
         TransitionComponent={Transition}
         keepMounted
         onClose={() => setLeftNavOpen(false)}
         aria-describedby="alert-dialog-slide-description"
-        style={{ marginRight: "60%" }}
+        style={{
+          margin: "1%",
+          width: "20%",
+        }}
       >
-        {leftNavBarOpen ? <LeftNavBar /> : <></>}
+        <LeftNavBar />
       </Dialog>
       {renderMobileMenu}
       {renderMenu}
