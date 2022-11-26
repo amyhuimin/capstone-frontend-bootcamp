@@ -31,7 +31,6 @@ const queryClient = new QueryClient(queryClientConfig);
 
 const App = () => {
   const currentLocation = useLocation();
-  console.log(currentLocation);
 
   return (
     <div className="App">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 //import { postData } from "../PostSeedData";
 
 const ReadMore = ({ content, link }) => {
-  const [readMore, setReadMore] = useState(false);
+  const [readMore, setReadMore] = useState(true);
   const expansion = readMore ? " Show Less" : "    Read More";
   const text = content;
 
@@ -13,7 +13,7 @@ const ReadMore = ({ content, link }) => {
   return (
     <div>
       <p className="readMoreText">
-        {link == undefined ? (
+        {link == undefined || link === null ? (
           readMore ? (
             text
           ) : (

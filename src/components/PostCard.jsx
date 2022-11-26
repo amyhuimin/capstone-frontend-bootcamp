@@ -6,68 +6,89 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { grey } from "@mui/material/colors";
+import ReactPlayer from "react-player/lazy";
 import Button from "@mui/material/Button";
-import { postData } from "../PostSeedData";
 import ReadMore from "./ReadMore";
 import FollowButton from "./FollowButton";
-import { userData } from "../userData";
 
 const PostCard = (content) => {
+  console.log(content.content);
   return (
     <div className="postCard">
       <Card className="cards">
         <CardHeader
-          action={<FollowButton />}
-          title={postData[1].ideaName}
-          subheader={postData[1].oneLiner}
+          avatar={<Avatar src={content.content.imgURL} />}
+          title={content.content.user}
+          style={{ padding: "5" }}
         />
-        <CardHeader avatar={<Avatar src={userData[1].imgURL} />} />
-        <CardContent>
-          <Typography variant="body2" align="left" sx={{ mt: -3 }}>
-            {userData[1].user}
+        <CardHeader
+          action={<FollowButton />}
+          title={content.content.ideaName}
+          subheader={content.content.oneLiner}
+          style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
+        />
+
+        <CardContent
+          style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
+        >
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+            }}
+          >
+            {content.content.text != undefined ? (
+              <ReadMore
+                style={{ margin: "0" }}
+                content={content.content.text}
+              />
+            ) : (
+              <></>
+            )}
           </Typography>
-          <CardContent>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                display: "-webkit-box",
-              }}
-            >
-              <ReadMore content={postData[1].text} />
-            </Typography>
-          </CardContent>
-          {postData[1].imgURL ? (
-            <CardMedia
-              component="img"
-              height="194"
-              image={postData[1].imgURL}
-              alt="image"
-            />
-          ) : null}
-          ;
-          {postData[1].videoURL ? (
-            <CardMedia
-              component="video"
-              height="194"
-              src={postData[1].videoURL}
-              alt="video"
-            />
-          ) : null}
         </CardContent>
+        {content.content.imgURL ? (
+          <CardMedia
+            component="img"
+            height="194"
+            image={content.content.imgURL}
+            alt="image"
+          />
+        ) : null}
+        {content.content.videoURL ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <ReactPlayer
+              url={content.content.videoURL}
+              style={{
+                paddingLeft: "5%",
+                paddingRight: "5%",
+              }}
+              config={{
+                youtube: {
+                  playerVars: { controls: 1 },
+                },
+              }}
+            />
+          </div>
+        ) : null}
         <CardActions disableSpacing>
-          <Button variant="soft">{postData[1].tag1}</Button>
-          <Button variant="soft">{postData[1].tag2}</Button>
-          <Button variant="soft">{postData[1].tag3}</Button>
+          <Button variant="soft">{content.content.tag1}</Button>
+          <Button variant="soft">{content.content.tag2}</Button>
+          <Button variant="soft">{content.content.tag3}</Button>
 
           <Typography
             level="body3"
             sx={{ fontWeight: "md", color: "text.secondary" }}
           >
-            {postData[1].numberFollowers} Following
+            {content.content.numberFollowers} Following
           </Typography>
         </CardActions>
       </Card>

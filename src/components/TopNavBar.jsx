@@ -21,8 +21,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import LeftNavBar from "./LeftNavBar";
 import "./cssFiles/LeftNavBar.css";
-import { width } from "@mui/system";
-import { Hidden } from "@mui/material";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
