@@ -1,6 +1,7 @@
 import React from "react";
 import Detail from "./Detail";
 import "./cssFiles/newsCard.css";
+import ReadMore from "./ReadMore";
 
 function NewsCard(props) {
   if (
@@ -19,10 +20,10 @@ function NewsCard(props) {
         rel="noreferrer"
       >
         <img id="newsImage" src={props.imgurl} alt="lolz" />
-        <div className="newsCarddescription">
-          <Detail detailInfo={props.headline} fontWeight={700} />
-        </div>
       </a>
+      <div className="newsCarddescription">
+        <ReadMore content={props.headline} link={props.url} />
+      </div>
     </div>
   );
 }

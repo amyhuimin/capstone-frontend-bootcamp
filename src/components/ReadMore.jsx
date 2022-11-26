@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 //import { postData } from "../PostSeedData";
 
-const ReadMore = ({ content }) => {
+const ReadMore = ({ content, link }) => {
   const [readMore, setReadMore] = useState(false);
-  const expansion = readMore ? " Show Less" : "...Read More";
+  const expansion = readMore ? " Show Less" : "    Read More";
   const text = content;
 
   const toggleReadMore = () => {
@@ -13,9 +13,29 @@ const ReadMore = ({ content }) => {
   return (
     <div>
       <p className="readMoreText">
-        {readMore ? text : text.slice(0, 100)}
+        {link == undefined ? (
+          readMore ? (
+            text
+          ) : (
+            text.slice(0, 100)
+          )
+        ) : (
+          <a
+            style={{ color: "inherit" }}
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {readMore ? text : text.slice(0, 100)}
+          </a>
+        )}
         {text.length < 101 ? null : (
-          <span onClick={toggleReadMore}>{expansion}</span>
+          <span
+            onClick={toggleReadMore}
+            style={{ color: "orange", textDecoration: "underline" }}
+          >
+            {expansion}
+          </span>
         )}
       </p>
     </div>

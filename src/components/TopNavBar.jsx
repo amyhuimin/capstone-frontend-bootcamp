@@ -1,6 +1,8 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
+import Dialog from "@mui/material/Dialog";
+import Slide from "@mui/material/Slide";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -17,12 +19,17 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import HomeIcon from "@mui/icons-material/Home";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
-import { pink } from "@mui/material/colors";
+import LeftNavBar from "./LeftNavBar";
+import "./cssFiles/LeftNavBar.css";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: "#f8bbd0",
+  backgroundColor: "#FDFD96",
   "&:hover": {
     backgroundColor: "#fce4ec",
   },
@@ -59,9 +66,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(prop) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [leftNavBarOpen, setLeftNavOpen] = React.useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -104,7 +112,8 @@ export default function PrimarySearchAppBar() {
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
-
+  const homewidth = prop.current === "/" ? "5px" : "0px";
+  const ideaswidth = prop.current === "/ideas" ? "5px" : "0px";
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -122,6 +131,54 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem>
+        {" "}
+        <a
+          style={{
+            borderStyle: "solid",
+            borderWidth: "0",
+            borderBottomWidth: homewidth,
+            borderColor: "black",
+          }}
+          href="/"
+          rel="noreferrer"
+        >
+          <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+          >
+            <Badge badgeContent={2} color="error">
+              <HomeIcon />
+            </Badge>
+          </IconButton>
+        </a>
+        <p>Home</p>
+      </MenuItem>
+      <MenuItem>
+        <a
+          style={{
+            color: "black",
+            borderStyle: "solid",
+            borderWidth: "0",
+            borderBottomWidth: ideaswidth,
+            borderColor: "pink",
+          }}
+          href="/ideas"
+          rel="noreferrer"
+        >
+          <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+          >
+            <Badge badgeContent={1} color="error">
+              <TipsAndUpdatesIcon />
+            </Badge>
+          </IconButton>
+        </a>
+        <p>Ideas</p>
+      </MenuItem>
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
@@ -159,17 +216,22 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ backgroundColor: "#fce4ec", flexGrow: 1 }}>
-      <AppBar style={{ background: "white", color: "black"}} position="static">
+      <AppBar style={{ background: "white", color: "black" }} position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          {prop.current === "/" ? (
+            <></>
+          ) : (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={() => setLeftNavOpen(!leftNavBarOpen)}
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
           <Typography
             variant="h6"
             noWrap
@@ -188,25 +250,50 @@ export default function PrimarySearchAppBar() {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
+
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
+            <a
+              style={{
+                color: "black",
+                borderStyle: "solid",
+                borderWidth: "0",
+                borderBottomWidth: homewidth,
+                borderColor: "pink",
+              }}
+              href="/"
+              rel="noreferrer"
             >
-              <Badge badgeContent={2} color="error">
-                <HomeIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+              >
+                <Badge badgeContent={2} color="error">
+                  <HomeIcon />
+                </Badge>
+              </IconButton>
+            </a>
+            <a
+              style={{
+                color: "black",
+                borderStyle: "solid",
+                borderWidth: "0",
+                borderBottomWidth: ideaswidth,
+                borderColor: "pink",
+              }}
+              href="/ideas"
+              rel="noreferrer"
             >
-              <Badge badgeContent={1} color="error">
-                <TipsAndUpdatesIcon />
-              </Badge>
-            </IconButton>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+              >
+                <Badge badgeContent={1} color="error">
+                  <TipsAndUpdatesIcon />
+                </Badge>
+              </IconButton>
+            </a>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
@@ -251,6 +338,16 @@ export default function PrimarySearchAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
+      <Dialog
+        open={leftNavBarOpen}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => setLeftNavOpen(false)}
+        aria-describedby="alert-dialog-slide-description"
+        style={{ marginRight: "60%" }}
+      >
+        {leftNavBarOpen ? <LeftNavBar /> : <></>}
+      </Dialog>
       {renderMobileMenu}
       {renderMenu}
     </Box>

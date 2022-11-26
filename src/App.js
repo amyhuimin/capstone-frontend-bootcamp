@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./App.css";
@@ -30,13 +30,15 @@ const queryClientConfig = {
 const queryClient = new QueryClient(queryClientConfig);
 
 const App = () => {
+  const currentLocation = useLocation();
+  console.log(currentLocation);
+
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <div className="TopNavbar">
-          <TopNavBar/>
+          <TopNavBar current={currentLocation.pathname} />
         </div>
-        {/*replace line 33 with navbar here at this line */}
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/ideas" element={<IdeasPage />} />
