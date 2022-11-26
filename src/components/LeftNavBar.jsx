@@ -10,6 +10,7 @@ import "../App.css";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ButtonGroup } from "@mui/material";
+import NewIdeaForm from "./NewIdeaForm";
 
 function LeftNavBar() {
   return (
@@ -17,12 +18,7 @@ function LeftNavBar() {
       <Box bgcolor="white" style={{ borderRadius: 2, width: "100%" }}>
         <div className="ActionsBtn">
           <ButtonGroup>
-            <Button
-              sx={{ backgroundColor: "#FFCE35", color: "black" }}
-              variant="outlined"
-            >
-              Save a new idea
-            </Button>
+            <NewIdeaForm/>
             <br />
             <Button
               sx={{ backgroundColor: "#FFCE35", color: "black" }}
