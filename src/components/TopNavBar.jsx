@@ -29,7 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: "#FDFD96",
+  backgroundColor: "#FFCE35",
   "&:hover": {
     backgroundColor: "#fce4ec",
   },
