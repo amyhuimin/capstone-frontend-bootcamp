@@ -9,6 +9,8 @@ import "../App.css";
 import Box from "@mui/material/Box";
 import { postData } from "../PostSeedData";
 import PostCard from "./PostCard.jsx";
+import CreatePostCard from "./CreatePostCard";
+
 import "./cssFiles/newsfeed.css";
 
 function NewsFeed() {
@@ -41,6 +43,8 @@ function NewsFeed() {
     <div className="newsfeed">
       <Box bgcolor="transparent">
         <div className="newsfeedscroll">
+          <CreatePostCard />
+          <hr />
           {postData.map((posts) => {
             return <PostCard key={postData.indexOf(posts)} content={posts} />;
           })}

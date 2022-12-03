@@ -17,12 +17,13 @@ const PostCard = (content) => {
     <div className="postCard">
       <Card className="cards">
         <CardHeader
+          action={<FollowButton />}
           avatar={<Avatar src={content.content.imgURL} />}
           title={content.content.user}
-          style={{ padding: "5" }}
+          style={{ padding: "3% 0 2% 5%" }}
         />
         <CardHeader
-          action={<FollowButton />}
+          className="postCardHeaders"
           title={content.content.ideaName}
           subheader={content.content.oneLiner}
           style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
@@ -31,6 +32,9 @@ const PostCard = (content) => {
         <CardContent
           style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
         >
+          <Typography variant="body2" color="text.secondary">
+            Request Type: {content.content.requestType}
+          </Typography>
           <Typography
             variant="body2"
             color="text.secondary"
