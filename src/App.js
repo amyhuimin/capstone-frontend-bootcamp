@@ -3,7 +3,12 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./App.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { PostsQuery } from "./Queries";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 import IdeasPage from "./components/IdeasPage";
 import TopNavBar from "./components/TopNavBar";
 // import customtheme from "./style/theme";

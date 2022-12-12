@@ -12,20 +12,19 @@ import ReadMore from "./ReadMore";
 import FollowButton from "./FollowButton";
 
 const PostCard = (content) => {
-  console.log(content.content);
   return (
     <div className="postCard">
       <Card className="cards">
         <CardHeader
           action={<FollowButton />}
-          avatar={<Avatar src={content.content.imgURL} />}
-          title={content.content.user}
+          avatar={<Avatar src={content.content.ImgURL} />}
+          title={content.content.User}
           style={{ padding: "3% 0 2% 5%" }}
         />
         <CardHeader
           className="postCardHeaders"
-          title={content.content.ideaName}
-          subheader={content.content.oneLiner}
+          title={content.content.IdeaName}
+          subheader={content.content.OneLiner}
           style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
         />
 
@@ -44,25 +43,25 @@ const PostCard = (content) => {
               display: "-webkit-box",
             }}
           >
-            {content.content.text != undefined ? (
+            {content.Text != undefined ? (
               <ReadMore
                 style={{ margin: "0" }}
-                content={content.content.text}
+                content={content.content.Text}
               />
             ) : (
               <></>
             )}
           </Typography>
         </CardContent>
-        {content.content.imgURL ? (
+        {content.ImgURL ? (
           <CardMedia
             component="img"
             height="194"
-            image={content.content.imgURL}
+            image={content.content.ImgURL}
             alt="image"
           />
         ) : null}
-        {content.content.videoURL ? (
+        {content.content.VideoURL ? (
           <div
             style={{
               display: "flex",
@@ -70,7 +69,7 @@ const PostCard = (content) => {
             }}
           >
             <ReactPlayer
-              url={content.content.videoURL}
+              url={content.content.VideoURL}
               style={{
                 paddingLeft: "5%",
                 paddingRight: "5%",
@@ -84,15 +83,15 @@ const PostCard = (content) => {
           </div>
         ) : null}
         <CardActions disableSpacing>
-          <Button variant="soft">{content.content.tag1}</Button>
-          <Button variant="soft">{content.content.tag2}</Button>
-          <Button variant="soft">{content.content.tag3}</Button>
+          <Button variant="soft">{content.content.Tag1}</Button>
+          <Button variant="soft">{content.content.Tag2}</Button>
+          <Button variant="soft">{content.content.Tag3}</Button>
 
           <Typography
             level="body3"
             sx={{ fontWeight: "md", color: "text.secondary" }}
           >
-            {content.content.numberFollowers} Following
+            {content.content.NumberFollowers} Following
           </Typography>
         </CardActions>
       </Card>
