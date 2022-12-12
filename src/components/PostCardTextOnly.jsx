@@ -42,7 +42,7 @@ const PostCardTextOnly = (content) => {
               display: "-webkit-box",
             }}
           >
-            {content.Text != undefined ? (
+            {content.content.Text != undefined ? (
               <ReadMore
                 style={{ margin: "0" }}
                 content={content.content.Text}

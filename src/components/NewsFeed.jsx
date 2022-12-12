@@ -27,7 +27,12 @@ function NewsFeed() {
         <Box bgcolor="transparent">
           <div className="newsfeedscroll">
             {data.data.map((posts) => {
-              return <PostCard key={postData.indexOf(posts)} content={posts} />;
+              return (
+                <PostCardTextOnly
+                  key={postData.indexOf(posts)}
+                  content={posts}
+                />
+              );
             })}
           </div>
         </Box>
