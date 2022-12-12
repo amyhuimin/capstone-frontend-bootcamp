@@ -1,9 +1,10 @@
+import { Link } from "@mui/material";
 import React, { useState } from "react";
 //import { postData } from "../PostSeedData";
 
 const ReadMore = ({ content, link }) => {
-  const [readMore, setReadMore] = useState(true);
-  const expansion = readMore ? " Show Less" : "    Read More";
+  const [readMore, setReadMore] = useState(false);
+  const expansion = readMore ? " Show Less" : " ...Read More";
   const text = content;
 
   const toggleReadMore = () => {

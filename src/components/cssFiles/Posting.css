@@ -1,3 +1,7 @@
 .postButtonArea {
   display: flex;
 }
+
+.postFormTopInput {
+  display: flex;
+}

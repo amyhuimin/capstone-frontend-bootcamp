@@ -8,7 +8,7 @@ import "./cssFiles/rightNewsBar.css";
 import "../App.css";
 import Box from "@mui/material/Box";
 import { postData } from "../PostSeedData";
-import PostCard from "./PostCard.jsx";
+import PostCardTextOnly from "./PostCardTextOnly.jsx";
 import CreatePostCard from "./CreatePostCard";
 
 import "./cssFiles/newsfeed.css";

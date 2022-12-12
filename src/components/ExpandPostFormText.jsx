@@ -8,8 +8,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
+import PostingForm from "./PostingForm";
+import PostButton from "./PostButton";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -54,18 +55,20 @@ const ColorButton = styled(Button)(({ theme }) => ({
   fontSize: 15,
   textTransform: "none",
   justifyContent: "space-between",
+  fullWidth: true,
   backgroundColor: grey[200],
   "&:hover": {
     backgroundColor: grey[300],
   },
 }));
 
-const ExpandPostFormText = () => {
+const ExpandPostFormText = (props) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -73,10 +76,12 @@ const ExpandPostFormText = () => {
   return (
     <div>
       <ColorButton variant="contained" onClick={handleClickOpen}>
-        <span>What's on your mind?</span>
+        What's on your mind?
       </ColorButton>
 
       <BootstrapDialog
+        fullWidth="true"
+        maxWidth="sm"
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
@@ -88,16 +93,20 @@ const ExpandPostFormText = () => {
           Create Post
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-            dui. Donec ullamcorper nulla non metus auctor fringilla.
-          </Typography>
+          <PostingForm
+            inputText={props.inputText}
+            handleTextChange={props.handleTextChange}
+            inputRequest={props.inputRequest}
+            handleRequestChange={props.handleRequestChange}
+            inputIdea={props.inputIdea}
+            handleIdeaChange={props.handleIdeaChange}
+            inputUpload={props.inputUpload}
+            handleUploadChange={props.handleUploadChange}
+          />
         </DialogContent>
+
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Post
-          </Button>
+          <PostButton handleClose={handleClose} />
         </DialogActions>
       </BootstrapDialog>
     </div>

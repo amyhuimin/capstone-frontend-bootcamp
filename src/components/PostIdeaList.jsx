@@ -4,19 +4,18 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { ideaData } from "../ideaSeedData";
 
-export default function SelectLabels() {
-  const [ideaList, setIdeaList] = React.useState("");
-
+export default function PostIdeaList(props) {
   const handleChange = (event) => {
-    setIdeaList(event.target.value);
+    props.handleIdeaChange(event.target.value);
   };
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 90 }}>
+      <FormControl sx={{ m: 1, minWidth: "65%" }}>
         <Select
-          value={ideaList}
+          value={props.inputIdea}
           onChange={handleChange}
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}
@@ -24,11 +23,8 @@ export default function SelectLabels() {
           <MenuItem value="">
             <em>Which idea are you posting for</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={ideaData.ideaID}>{ideaData.ideaName}</MenuItem>
         </Select>
-        <FormHelperText>Without label</FormHelperText>
       </FormControl>
     </div>
   );

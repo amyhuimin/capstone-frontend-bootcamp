@@ -5,30 +5,30 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function SelectLabels() {
-  const [request, setRequest] = React.useState("");
+export default function PostRequestList(props) {
+  /*  const [request, setRequest] = React.useState(""); */
 
   const handleChange = (event) => {
-    setRequest(event.target.value);
+    props.handleRequestChange(event.target.value);
   };
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{ m: 1, minWidth: "30%" }}>
         <Select
-          value={request}
+          value={props.inputRequest}
           onChange={handleChange}
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}
         >
           <MenuItem value="">
-            <em>Request Type</em>
+            <em>Request</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value="Comments">Asking for comments</MenuItem>
+          <MenuItem value="Help">Help needed</MenuItem>
+          <MenuItem value="Opinions">What do you think?</MenuItem>
+          <MenuItem value="Best Practice">What can be done better?</MenuItem>
         </Select>
-        <FormHelperText>Without label</FormHelperText>
       </FormControl>
     </div>
   );

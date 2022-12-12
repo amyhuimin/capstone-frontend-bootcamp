@@ -1,5 +1,6 @@
 const postData = [
   {
+    PostUUID: 5,
     date: "12 Dec 2022",
     userPostId: 1,
     user: "Jack Bauer",
@@ -15,6 +16,7 @@ const postData = [
     tag3: null,
   },
   {
+    PostUUID: 1,
     date: "01 Jun 2021",
     userPostId: 4,
     user: "Beyonce",
@@ -30,6 +32,7 @@ const postData = [
     tag3: null,
   },
   {
+    PostUUID: 4,
     date: "30 Apr 2022",
     userPostId: 1,
     user: "Chuck Norris",
@@ -49,7 +52,8 @@ const postData = [
 
 const ideaPostData = [
   {
-    title: "A NEW IDEA IS BORN!",
+    PostUUID: 3,
+    date: "30 Apr 2022",
     user: "Jack Bauer",
     ideaId: 1,
     ideaName: "Community app",
@@ -60,7 +64,8 @@ const ideaPostData = [
     tag3: null,
   },
   {
-    title: "A NEW IDEA IS BORN!",
+    PostUUID: 2,
+    date: "11 Nov 2021",
     user: "JungKook",
     ideaId: 3,
     ideaName: "Name Name Name Name Name",

@@ -8,9 +8,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import PostingForm from "./PostingForm";
+import PostButton from "./PostButton";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -61,7 +62,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const ExpandPostFormRequest = () => {
+const ExpandPostFormRequest = (props) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -78,6 +79,8 @@ const ExpandPostFormRequest = () => {
         <KeyboardArrowDownIcon />
       </ColorButton>
       <BootstrapDialog
+        fullWidth="true"
+        maxWidth="sm"
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
@@ -89,16 +92,20 @@ const ExpandPostFormRequest = () => {
           Create Post
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-            dui. Donec ullamcorper nulla non metus auctor fringilla.
-          </Typography>
+          <PostingForm
+            inputText={props.inputText}
+            handleTextChange={props.handleTextChange}
+            inputRequest={props.inputRequest}
+            handleRequestChange={props.handleRequestChange}
+            inputIdea={props.inputIdea}
+            handleIdeaChange={props.handleIdeaChange}
+            inputUpload={props.inputUpload}
+            handleUploadChange={props.handleUploadChange}
+          />
         </DialogContent>
+
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Post
-          </Button>
+          <PostButton handleClose={handleClose} />
         </DialogActions>
       </BootstrapDialog>
     </div>
