@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { ideaData } from "../ideaSeedData";
+import { ideaData } from "../IdeaSeedData";
 
 export default function PostIdeaList(props) {
   const handleChange = (event) => {

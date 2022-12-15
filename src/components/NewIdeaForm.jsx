@@ -21,6 +21,15 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import PublicIcon from "@mui/icons-material/Public";
+import PublicOffIcon from "@mui/icons-material/PublicOff";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+
+import PostUploadPhotoVideo from "./PostUploadPhotoVideo";
+
 const steps = [
   {
     label: "What is the Idea? (details)",
@@ -139,11 +148,69 @@ const steps = [
   },
   {
     label: "Upload Video & Photos as reference",
-    description: `Place holder for upload photos and videos functions`,
+    description: (
+      <div>
+        <PostUploadPhotoVideo />
+        <br />
+        Place holder for upload photos and videos preview
+      </div>
+    ),
   },
   {
     label: "Saving the idea",
-    description: `Placeholder for tags and setting private or live toggle`,
+    description: (
+      <div>
+        <DialogContent>
+          <TextField
+            autoFocus
+            id="outlined-basic"
+            variant="outlined"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+            fullWidth
+            type="tag1"
+            placeholder="Tag Input 1"
+          />
+          <TextField
+            autoFocus
+            id="outlined-basic"
+            variant="outlined"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+            fullWidth
+            type="tag2"
+            placeholder="Tag Input 2"
+          />
+          <TextField
+            autoFocus
+            id="outlined-basic"
+            variant="outlined"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+            fullWidth
+            type="tag3"
+            placeholder="Tag Input 3"
+          />
+        </DialogContent>
+        Set private or Live!
+        <ToggleButtonGroup
+          // value={alignment}
+          exclusive
+          // onChange={handleAlignment}
+          aria-label="text alignment"
+        >
+          <IconButton size="large" color="inherit">
+            <PublicIcon />
+          </IconButton>
+          <IconButton size="large" color="inherit">
+            <PublicOffIcon />
+          </IconButton>
+        </ToggleButtonGroup>
+      </div>
+    ),
   },
 ];
 

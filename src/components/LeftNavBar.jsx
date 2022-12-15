@@ -7,10 +7,11 @@ import "./cssFiles/LeftNavBar.css";
 
 import "../App.css";
 
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ButtonGroup } from "@mui/material";
 import NewIdeaForm from "./NewIdeaForm";
+
 
 function LeftNavBar() {
   return (
@@ -20,12 +21,13 @@ function LeftNavBar() {
           <ButtonGroup>
             <NewIdeaForm/>
             <br />
-            <Button
+            
+            {/* <Button
               sx={{ backgroundColor: "#FFCE35", color: "black" }}
               variant="outlined"
             >
               Founders Circle Link
-            </Button>
+            </Button> */}
           </ButtonGroup>
         </div>
         <div className="leftNavScroll">
