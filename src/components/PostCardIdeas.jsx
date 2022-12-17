@@ -10,7 +10,6 @@ import ReadMore from "./ReadMore";
 import FollowButton from "./FollowButton";
 
 const PostCardTextOnly = (content) => {
-  console.log(content.content);
   return (
     <div className="postCard">
       <Card className="cards">

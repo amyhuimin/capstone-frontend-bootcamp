@@ -21,7 +21,6 @@ function NewsFeed() {
   );
 
   if (!isLoading && !isError) {
-    console.log(data);
     return (
       <div className="newsfeed">
         <Box bgcolor="transparent">
