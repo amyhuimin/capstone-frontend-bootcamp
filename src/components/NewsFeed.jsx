@@ -19,6 +19,7 @@ function NewsFeed() {
     ["posts"], //[key(Ownself name it), props]
     () => PostsQuery() //function you want to use from Queries.js
   );
+  console.log(data)
 
   if (!isLoading && !isError) {
     return (

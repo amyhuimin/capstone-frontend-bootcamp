@@ -285,61 +285,103 @@ export default function NewIdeaForm() {
       >
         Save a new idea
       </Button>
-
       <Dialog open={open} onClose={handleClose}>
-        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-          <Paper
+        {/* <Box sx={{ maxWidth: 400, height: "100px", flexGrow: 1 }}> */}
+        {/* <Paper
             square
             elevation={0}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              height: 50,
-              pl: 2,
-              bgcolor: "background.default",
-            }}
-          >
-            <Typography>{steps[activeStep].label}</Typography>
-          </Paper>
-          <Box sx={{ height: 255, maxWidth: 400, width: "100%", p: 2 }}>
-            {steps[activeStep].description}
-          </Box>
-          <MobileStepper
-            variant="dots"
-            steps={4}
-            position="static"
-            activeStep={activeStep}
-            sx={{ maxWidth: 400, flexGrow: 1 }}
-            nextButton={
+            // sx={{
+            //   display: "flex",
+            //   alignItems: "center",
+            //   height: 50,
+            //   pl: 3,
+            //   bgcolor: "background.default",
+            // }}
+          > */}
+        <Typography>{steps[activeStep].label}</Typography>
+
+        {steps[activeStep].description}
+        <MobileStepper
+          variant="dots"
+          steps={4}
+          position="static"
+          sx={{ maxWidth: 400, flexGrow: 1 }}
+          activeStep={activeStep}
+          // nextButton={
+          //   <Button
+          //     size="small"
+          //     onClick={handleNext}
+          //     disabled={activeStep === 4}
+          //   >
+          //     {activeStep === steps.length - 1 ? "Finish" : "Next"}
+          //     {theme.direction === "rtl" ? (
+          //       <KeyboardArrowLeft />
+          //     ) : (
+          //       <KeyboardArrowRight />
+          //     )}
+          //   </Button>
+          // }
+          // backButton={
+          //   <Button
+          //     size="small"
+          //     onClick={handleBack}
+          //     disabled={activeStep === 0}
+          //   >
+          //     {theme.direction === "rtl" ? (
+          //       <KeyboardArrowRight />
+          //     ) : (
+          //       <KeyboardArrowLeft />
+          //     )}
+          //     Back
+          //   </Button>
+          // }
+        />
+        {activeStep === steps.length ? (
+          <React.Fragment>
+            <Typography sx={{ mt: 2, mb: 1 }}>
+              All steps completed - you&apos;re finished
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+              <Box sx={{ flex: "1 1 auto" }} />
+              <Button onClick={handleReset}>Reset</Button>
+            </Box>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Button
-                size="small"
-                onClick={handleNext}
-                disabled={activeStep === 5}
-              >
-                Next
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowLeft />
-                ) : (
-                  <KeyboardArrowRight />
-                )}
-              </Button>
-            }
-            backButton={
-              <Button
-                size="small"
-                onClick={handleBack}
+                color="inherit"
                 disabled={activeStep === 0}
+                onClick={handleBack}
+                sx={{ mr: 1 }}
               >
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowRight />
-                ) : (
-                  <KeyboardArrowLeft />
-                )}
                 Back
               </Button>
-            }
-          />
-        </Box>
+              <Button onClick={handleNext}>
+                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              </Button>
+
+              <Box sx={{ flex: "1 1 auto" }} />
+
+            </Box>
+          </React.Fragment>
+        )}
+
+        {/* </Paper> */}
+        {/* </Box> */}
+        {/* {activeStep !== steps.length &&
+          (completed[activeStep] ? (
+            <Typography variant="caption" sx={{ display: "inline-block" }}>
+              Step {activeStep + 1} already completed
+            </Typography>
+          ) : (
+            <Button onClick={handleComplete}>
+              {completedSteps() === totalSteps() - 1
+                ? "Finish"
+                : "Skip/ Complete Step"}
+            </Button>
+          ))} */}
       </Dialog>
     </div>
   );
