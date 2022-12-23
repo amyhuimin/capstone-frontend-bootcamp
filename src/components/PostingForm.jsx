@@ -5,6 +5,7 @@ import PostRequestList from "./PostRequestList";
 import PostIdeaList from "./PostIdeaList";
 import "./cssFiles/Posting.css";
 import ReactPlayer from "react-player/lazy";
+import PostTag from "./PostTag";
 
 const PostingForm = (props) => {
   return (
@@ -46,6 +47,11 @@ const PostingForm = (props) => {
           inputUpload={props.inputUpload}
           handleUploadChange={props.handleUploadChange}
         />
+      </div>
+      <div>
+        <PostTag />
+        <PostTag />
+        <PostTag />
       </div>
       <div>
         <PostUploadPhotoVideo
