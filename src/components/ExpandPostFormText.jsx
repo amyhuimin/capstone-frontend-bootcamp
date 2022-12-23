@@ -106,7 +106,13 @@ const ExpandPostFormText = (props) => {
         </DialogContent>
 
         <DialogActions>
-          <PostButton handleClose={handleClose} />
+          <PostButton
+            handleClose={handleClose}
+            inputText={props.inputText}
+            inputRequest={props.inputRequest}
+            inputIdea={props.inputIdea}
+            inputUpload={props.inputUpload}
+          />
         </DialogActions>
       </BootstrapDialog>
     </div>
