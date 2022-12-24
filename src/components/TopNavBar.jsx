@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Dialog from "@mui/material/Dialog";
@@ -70,12 +71,19 @@ export default function PrimarySearchAppBar(prop) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [leftNavBarOpen, setLeftNavOpen] = React.useState(false);
+  const { loginWithRedirect, user, logout } = useAuth0();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+    if (user == undefined) {
+      loginWithRedirect({
+        redirectUri: "http://localhost:3000/NewUserForm",
+      });
+    } else {
+      setAnchorEl(event.currentTarget);
+    }
   };
 
   const handleMobileMenuClose = () => {
@@ -110,6 +118,7 @@ export default function PrimarySearchAppBar(prop) {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={(event) => logout()}>Log out</MenuItem>
     </Menu>
   );
   const homewidth = prop.current === "/" ? "5px" : "0px";

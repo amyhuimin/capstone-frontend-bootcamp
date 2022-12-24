@@ -3,15 +3,13 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./App.css";
-import { PostsQuery } from "./Queries";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { Auth0Provider } from "@auth0/auth0-react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import IdeasPage from "./components/IdeasPage";
 import TopNavBar from "./components/TopNavBar";
-// import customtheme from "./style/theme";
+import CheckExistingUser from "./components/CheckExistingUser";
+
+// import customtheme from "./style/theme"
 
 const queryClientConfig = {
   defaultOptions: {
@@ -38,7 +36,13 @@ const App = () => {
   const currentLocation = useLocation();
 
   return (
-    <div className="App">
+    <Auth0Provider
+      domain={"dev-oa1xn--2.us.auth0.com"}
+      clientId={"r1hyr9OFqf6CnWGu0AviG3FwBLgtHX7V"}
+      redirectUri={"http://localhost:3000/NewUserForm"}
+      audience="https://Proj3/api"
+      scope="read:current_user update:current_user_metadata"
+    >
       <QueryClientProvider client={queryClient}>
         <div className="TopNavbar">
           <TopNavBar current={currentLocation.pathname} />
@@ -46,10 +50,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/ideas" element={<IdeasPage />} />
+          <Route path="/NewUserForm" element={<CheckExistingUser />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </div>
+    </Auth0Provider>
   );
 };
 export default App;

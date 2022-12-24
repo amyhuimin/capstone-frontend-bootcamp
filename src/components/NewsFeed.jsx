@@ -47,13 +47,16 @@ function NewsFeed() {
         <Box bgcolor="transparent">
           <div className="newsfeedscroll">
             <CreatePostCard />
-            {data.data.map((posts) => {
-              return (
-                <PostCardTextOnly
-                  key={postData.indexOf(posts)}
-                  content={posts}
-                />
-              );
+            {data.data.map((post) => {
+              if (post.IdeaId != null) {
+                return <PostCardIdeas key={post.Id} content={post} />;
+              } else if (post.VideoURL != null && post.ImgURL === null) {
+                return <PostCardWithVideo key={post.Id} content={post} />;
+              } else if (post.ImgURL != null && post.VideoURL === null) {
+                return <PostCardWithImg key={post.Id} content={post} />;
+              } else {
+                return <PostCardTextOnly key={post.Id} content={post} />;
+              }
             })}
           </div>
         </Box>
