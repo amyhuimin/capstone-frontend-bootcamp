@@ -50,6 +50,10 @@ const PostButton = (props) => {
     },
   ];
 
+  const handleChange = (event) => {
+    props.handleClose(event.target.event);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(data);
