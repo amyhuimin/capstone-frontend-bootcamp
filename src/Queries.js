@@ -16,6 +16,12 @@ async function PostsQuery() {
 //Posts upload
 async function PostAPost() {}
 
+//LeftNavBar get all
+async function LeftNavQuery() {
+  const data = axios.get(BackEndUrl + "/progressingideas");
+  return data;
+}
+
 //Ideas upload
 async function PostAnIdea(props) {
   const { data } = await axios.post(`${BackEndUrl}/idea/post`, props.newIdea);
@@ -72,6 +78,7 @@ async function makeNewUser(props) {
 export {
   NewsQuery,
   PostsQuery,
+  LeftNavQuery,
   PostAPost,
   uploadImage,
   PostAnIdea,

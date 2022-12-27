@@ -1,17 +1,21 @@
-import React from "react";
-import FollowedIdeas from "./FollowedIdeas";
-import FollowedPosts from "./FollowedPosts";
-import MediaFollowings from "./MediaFollowings";
+import React, { useState } from "react";
+
+//React Query imports
+// import { LeftNavQuery } from "../Queries.js";
+// import { useQuery } from "@tanstack/react-query";
+
 import ProgressingIdeas from "./ProgressingIdeas";
 import "./cssFiles/LeftNavBar.css";
-
 import "../App.css";
+
+import FollowedIdeas from "./FollowedIdeas";
+import FollowedPosts from "./FollowedPosts";
+// import MediaFollowings from "./MediaFollowings";
 
 // import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ButtonGroup } from "@mui/material";
 import NewIdeaForm from "./NewIdeaForm";
-
 
 function LeftNavBar() {
   return (
@@ -19,9 +23,9 @@ function LeftNavBar() {
       <Box bgcolor="white" style={{ borderRadius: 2, width: "100%" }}>
         <div className="ActionsBtn">
           <ButtonGroup>
-            <NewIdeaForm/>
+            <NewIdeaForm />
             <br />
-            
+
             {/* <Button
               sx={{ backgroundColor: "#FFCE35", color: "black" }}
               variant="outlined"
@@ -31,10 +35,22 @@ function LeftNavBar() {
           </ButtonGroup>
         </div>
         <div className="leftNavScroll">
-          <MediaFollowings />
-          <ProgressingIdeas />
+          <ProgressingIdeas />;
           <FollowedPosts />
           <FollowedIdeas />
+          {/* <ProgressingIdeas /> */}
+          {/* {data.data.map((item) => {
+            <ProgressingIdeas progressingIdeas={item} />;
+          })} */}
+          {/* {followedItems.map((item) => {
+            return (
+              <ProgressingIdeas
+                key={item.Id}
+                img={item.ImgURL}
+                name={item.IdeaName}
+              />
+            );
+          })} */}
         </div>
       </Box>
     </div>
