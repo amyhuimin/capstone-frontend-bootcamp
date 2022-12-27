@@ -15,6 +15,7 @@ const CreatePostCard = () => {
     imageURL: "",
     videoURL: "",
   });
+  const [inputTag1, setInputTag1] = useState("");
 
   const handleTextChange = (newText) => {
     setInputText(newText);
@@ -29,6 +30,10 @@ const CreatePostCard = () => {
   };
   const handleUploadChange = (newUpload) => {
     setInputUpload(newUpload);
+  };
+
+  const handleTag1Change = (newTag) => {
+    setInputTag1(newTag);
   };
 
   return (
@@ -47,6 +52,8 @@ const CreatePostCard = () => {
               handleIdeaChange={handleIdeaChange}
               inputUpload={inputUpload}
               handleUploadChange={handleUploadChange}
+              inputTag1={inputTag1}
+              handleTag1Change={handleTag1Change}
             />
           </div>
           <div className="postButtonArea">
@@ -60,6 +67,8 @@ const CreatePostCard = () => {
                 handleIdeaChange={handleIdeaChange}
                 inputUpload={inputUpload}
                 handleUploadChange={handleUploadChange}
+                inputTag1={inputTag1}
+                handleTag1Change={handleTag1Change}
               />
             </div>
             <div>
@@ -72,6 +81,8 @@ const CreatePostCard = () => {
                 handleIdeaChange={handleIdeaChange}
                 inputUpload={inputUpload}
                 handleUploadChange={handleUploadChange}
+                inputTag1={inputTag1}
+                handleTag1Change={handleTag1Change}
               />
             </div>
             <div>
@@ -84,6 +95,8 @@ const CreatePostCard = () => {
                 handleIdeaChange={handleIdeaChange}
                 inputUpload={inputUpload}
                 handleUploadChange={handleUploadChange}
+                inputTag1={inputTag1}
+                handleTag1Change={handleTag1Change}
               />
             </div>
           </div>

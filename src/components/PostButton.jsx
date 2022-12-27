@@ -25,15 +25,6 @@ const PostButton = (props) => {
     }
   };
 
-  /*  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  }; */
-
   const data = [
     {
       date: new Date(),
@@ -51,7 +42,7 @@ const PostButton = (props) => {
   ];
 
   const handleChange = (event) => {
-    props.handleClose(event.target.event);
+    props.handleCloseChange(event.target.event);
   };
 
   const handleSubmit = (event) => {
@@ -66,7 +57,8 @@ const PostButton = (props) => {
           variant="contained"
           endIcon={<SendIcon />}
           autoFocus
-          onChange={props.handleClose}
+          onClick={handleChange}
+          type="submit"
         >
           Post!
         </ColorButton>

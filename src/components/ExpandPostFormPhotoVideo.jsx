@@ -62,6 +62,10 @@ const ExpandPostFormPhotoVideo = (props) => {
     setOpen(false);
   };
 
+  const handleCloseChange = (newState) => {
+    setOpen(newState);
+  };
+
   const ColorIcon = styled(Button)(({ theme }) => ({
     color: grey[700],
     fontSize: 15,
@@ -104,16 +108,20 @@ const ExpandPostFormPhotoVideo = (props) => {
             handleIdeaChange={props.handleIdeaChange}
             inputUpload={props.inputUpload}
             handleUploadChange={props.handleUploadChange}
+            inputTag1={props.inputTag1}
+            handleTag1Change={props.handleTag1Change}
           />
         </DialogContent>
 
         <DialogActions>
           <PostButton
-            handleClose={handleClose}
+            handleCloseChange={handleCloseChange}
+            open={open}
             inputText={props.inputText}
             inputRequest={props.inputRequest}
             inputIdea={props.inputIdea}
             inputUpload={props.inputUpload}
+            inputTag1={props.inputTag1}
           />
         </DialogActions>
       </BootstrapDialog>

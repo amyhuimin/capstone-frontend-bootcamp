@@ -4,7 +4,11 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 
-export default function PostTag() {
+export default function PostTag1(props) {
+  const handleChange = (event) => {
+    props.handleTag1Change(event.target.value);
+  };
+
   return (
     <div>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -17,6 +21,8 @@ export default function PostTag() {
               inputProps={{
                 "aria-label": "weight",
               }}
+              value={props.inputTag1}
+              onChange={handleChange}
             />
             <FormHelperText id="outlined-weight-helper-text">
               Tag
