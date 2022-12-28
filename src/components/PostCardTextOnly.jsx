@@ -31,7 +31,7 @@ const PostCardTextOnly = (content) => {
           style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
         >
           <Typography variant="body2" color="text.secondary">
-            Request Type: {content.content.requestType}
+            Request Type: {content.content.RequestType}
           </Typography>
           <Typography
             variant="body2"

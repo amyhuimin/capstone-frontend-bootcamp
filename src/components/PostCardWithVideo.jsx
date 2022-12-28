@@ -19,7 +19,7 @@ const PostCard = (content) => {
         <CardHeader
           action={<FollowButton />}
           avatar={<Avatar src={content.content.ImgURL} />}
-          title={content.content.user}
+          title={content.content.User}
           style={{ padding: "3% 0 2% 5%" }}
         />
         <CardHeader

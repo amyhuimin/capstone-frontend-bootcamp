@@ -16,8 +16,8 @@ const PostCardTextOnly = (content) => {
       <Card className="cards">
         <CardHeader
           action={<FollowButton />}
-          avatar={<Avatar src={content.content.imgURL} />}
-          title={content.content.user}
+          avatar={<Avatar src={content.content.ImgURL} />}
+          title={content.content.User}
           style={{ padding: "3% 0 2% 5%" }}
         />
         <CardHeader
@@ -30,7 +30,7 @@ const PostCardTextOnly = (content) => {
           style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
         >
           <Typography variant="subtitle2">
-            {content.content.ideaName}
+            {content.content.IdeaName}
           </Typography>
           <Typography
             variant="body2"
@@ -41,10 +41,10 @@ const PostCardTextOnly = (content) => {
               display: "-webkit-box",
             }}
           >
-            {content.content.oneLiner != undefined ? (
+            {content.content.OneLiner != undefined ? (
               <ReadMore
                 style={{ margin: "0" }}
-                content={content.content.oneLiner}
+                content={content.content.OneLiner}
               />
             ) : (
               <></>
@@ -81,15 +81,15 @@ const PostCardTextOnly = (content) => {
           </div>
         ) : null} */}
         <CardActions disableSpacing>
-          <Button variant="soft">{content.content.tag1}</Button>
-          <Button variant="soft">{content.content.tag2}</Button>
-          <Button variant="soft">{content.content.tag3}</Button>
+          <Button variant="soft">{content.content.Tag1}</Button>
+          <Button variant="soft">{content.content.Tag2}</Button>
+          <Button variant="soft">{content.content.Tag3}</Button>
 
           <Typography
             level="body3"
             sx={{ fontWeight: "md", color: "text.secondary" }}
           >
-            {content.content.numberFollowers} Following
+            {content.content.NumberFollowers} Following
           </Typography>
         </CardActions>
         <CommentsSection />
