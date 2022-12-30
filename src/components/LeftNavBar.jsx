@@ -25,32 +25,13 @@ function LeftNavBar() {
           <ButtonGroup>
             <NewIdeaForm />
             <br />
-
-            {/* <Button
-              sx={{ backgroundColor: "#FFCE35", color: "black" }}
-              variant="outlined"
-            >
-              Founders Circle Link
-            </Button> */}
           </ButtonGroup>
         </div>
         <div className="leftNavScroll">
-          <ProgressingIdeas />;
+          <ProgressingIdeas />
           <FollowedPosts />
           <FollowedIdeas />
-          {/* <ProgressingIdeas /> */}
-          {/* {data.data.map((item) => {
-            <ProgressingIdeas progressingIdeas={item} />;
-          })} */}
-          {/* {followedItems.map((item) => {
-            return (
-              <ProgressingIdeas
-                key={item.Id}
-                img={item.ImgURL}
-                name={item.IdeaName}
-              />
-            );
-          })} */}
+          
         </div>
       </Box>
     </div>

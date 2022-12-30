@@ -1,27 +1,35 @@
 import React from "react";
 // import { progressingIdeas } from "../seedData";
 import FollowedItems from "./FollowedItems";
+import { useAuth0 } from "@auth0/auth0-react";
 
 //React Query imports
 import { LeftNavQuery } from "../Queries.js";
+import {  getCurrentUser } from "../Queries";
 import { useQuery } from "@tanstack/react-query";
 import Box from "@mui/material/Box";
 
-// function CreateProgressingIdeas(progressingIdea) {
-
-//   return (
-//     <FollowedItems
-//       key={progressingIdea.id}
-//       img={progressingIdea.imgURL}
-//       name={progressingIdea.ideaName}
-//     />
-//   );
-// }
 
 function ProgressingIdeas(progressingIdeas) {
+
   //React Query hook
+  // const { user, getAccessTokenSilently } = useAuth0();
+  // const getUserInfo = async () => {
+  //   const accessToken = await getAccessTokenSilently({
+  //     audience: `https://Proj3/api`,
+  //     scope: "read:current_user",
+  //   });
+  //   return accessToken;
+  // };
+
   const { isLoading, data, isError } = useQuery(
-    ["followedItems"], //[key(Ownself name it), props]
+    // ["currentUser"],
+    // () =>
+    //     getCurrentUser({
+    //       userEmail: user.email,
+    //       accessToken: async () => await getUserInfo(),
+    //     })
+      ["followedItems"], //[key(Ownself name it), props]
     () => LeftNavQuery() //function you want to use from Queries.js
   );
 
