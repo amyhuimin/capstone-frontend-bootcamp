@@ -1,3 +1,4 @@
+import { Avatar } from "@mui/material";
 import React, { useState } from "react";
 
 const CommentsSection = ({ postId }) => {
@@ -19,14 +20,18 @@ const CommentsSection = ({ postId }) => {
 
   return (
     <div>
-      <h2>Comments:</h2>
       {comments.map((comment) => (
         <p>{comment}</p>
       ))}
       <form onSubmit={handleSubmit}>
         <label>
-          Add a comment:
-          <input type="text" value={newComment} onChange={handleChange} />
+          <Avatar></Avatar>
+          <input
+            type="text"
+            value={newComment}
+            onChange={handleChange}
+            placeholder="add a comment"
+          />
         </label>
         <button type="submit">Submit</button>
       </form>

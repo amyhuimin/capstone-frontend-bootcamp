@@ -11,9 +11,10 @@ import { postData } from "../PostSeedData";
 import PostCardTextOnly from "./PostCardTextOnly.jsx";
 import PostCardWithImg from "./PostCardWithImg";
 import PostCardWithVideo from "./PostCardWithVideo";
-// import PostCardWithVideoImage from "./PostCardWithVideoImage";
+import PostCardWithVideoImage from "./PostCardWithVideoImage";
 import PostCardIdeas from "./PostCardIdeas";
 import CreatePostCard from "./CreatePostCard";
+import CommentsSection from "./Comments2.jsx";
 
 import "./cssFiles/newsfeed.css";
 
@@ -40,6 +41,8 @@ function NewsFeed() {
                 return <PostCardWithVideo key={post.Id} content={post} />;
               } else if (post.ImgURL != null && post.VideoURL === null) {
                 return <PostCardWithImg key={post.Id} content={post} />;
+              } else if (post.ImgURL != null && post.VideoURL != null) {
+                return <PostCardWithVideoImage key={post.Id} content={post} />;
               } else {
                 return <PostCardTextOnly key={post.Id} content={post} />;
               }
