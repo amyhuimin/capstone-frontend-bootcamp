@@ -40,6 +40,13 @@ async function PostAnIdea(props) {
   return;
 }
 
+async function GetAnIdea(props) {
+  const { data } = await axios.get(
+    `${BackEndUrl}/idea/get/${props.queryKey[1]}`
+  );
+  return data;
+}
+
 //S3 image upload
 async function uploadImage(props) {
   const formData = new FormData();
@@ -50,7 +57,7 @@ async function uploadImage(props) {
 }
 
 async function getCurrentUser(props) {
-  const { data } = await axios.get(`${BackEndUrl}/User/${props.userEmail}`, {
+  const { data } = await axios.get(`${BackEndUrl}/User/${props.data}`, {
     headers: {
       Authorization: `Bearer ${props.accessToken}`,
     },
@@ -84,4 +91,5 @@ export {
   PostAnIdea,
   getCurrentUser,
   makeNewUser,
+  GetAnIdea,
 };

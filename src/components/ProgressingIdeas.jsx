@@ -1,69 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { progressingIdeas } from "../seedData";
 import FollowedItems from "./FollowedItems";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import FollowedIdeas from "./FollowedIdeas";
 //React Query imports
 import { LeftNavQuery } from "../Queries.js";
-import {  getCurrentUser } from "../Queries";
-import { useQuery } from "@tanstack/react-query";
-import Box from "@mui/material/Box";
-
+import { getCurrentUser } from "../Queries";
+import { useMutation } from "@tanstack/react-query";
 
 function ProgressingIdeas(progressingIdeas) {
-
   //React Query hook
-  // const { user, getAccessTokenSilently } = useAuth0();
-  // const getUserInfo = async () => {
-  //   const accessToken = await getAccessTokenSilently({
-  //     audience: `https://Proj3/api`,
-  //     scope: "read:current_user",
-  //   });
-  //   return accessToken;
-  // };
-
-  const { isLoading, data, isError } = useQuery(
-    // ["currentUser"],
-    // () =>
-    //     getCurrentUser({
-    //       userEmail: user.email,
-    //       accessToken: async () => await getUserInfo(),
-    //     })
-      ["followedItems"], //[key(Ownself name it), props]
-    () => LeftNavQuery() //function you want to use from Queries.js
+  const { user, getAccessTokenSilently } = useAuth0();
+  const [userEmail, setUUID] = React.useState("");
+  const [followedItems, setFollowedItems] = React.useState(null);
+  const { data, mutate, isLoading, isError } = useMutation(
+    (props) => getCurrentUser(props),
+    {
+      retry: false,
+      onSuccess: (data) => setFollowedItems(Object.values(data.FollowIdeas)),
+    }
   );
 
-  if (isLoading) {
+  const getUserInfo = async () => {
+    const accessToken = await getAccessTokenSilently({
+      audience: `https://Proj3/api`,
+      scope: "read:current_user",
+    });
+
+    mutate({ data: userEmail, accessToken: accessToken });
+  };
+
+  useEffect(() => {
+    if (user !== undefined) {
+      setUUID(user.email);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (userEmail !== "") {
+      getUserInfo();
+    }
+  }, [userEmail]);
+
+  if (followedItems !== null) {
     return (
-      <div className="rightNewsBar">
-        <Box bgcolor="white">
-          <div>is Loading</div>
-        </Box>
+      <div>
+        <FollowedIdeas data={followedItems} />
       </div>
     );
+  } else {
+    return <div></div>;
   }
-  if (isError) {
-    return (
-      <div className="rightNewsBar">
-        <Box bgcolor="white">
-          <div>Error Loading Ideas</div>
-        </Box>
-      </div>
-    );
-  }
-
-  let followedItems = data.data;
-
-  return (
-    <div>
-      <h1 style={{ marginLeft: 10 }}>Progressing Ideas</h1>
-      {followedItems.map((data) => {
-        return (
-          <FollowedItems key={data.Id} img={data.ImgURL} name={data.IdeaName} />
-        );
-      })}
-    </div>
-  );
 }
 
 export default ProgressingIdeas;

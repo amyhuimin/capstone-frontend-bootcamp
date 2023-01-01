@@ -11,13 +11,9 @@ const CheckExistingUser = () => {
   const [userExists, setUserExisting] = useState(undefined);
   const { data, mutate } = useMutation((props) => getCurrentUser(props), {
     onError: () => setUserExisting(false),
-    onSuccess: (data) => CurrentUser(data),
+    onSuccess: (data) => setUserExisting(true),
     retry: false,
   });
-
-  const CurrentUser = (data) => {
-    setUserExisting(data.data);
-  };
 
   async function checkUser() {
     const accessToken = await getAccessTokenSilently({
@@ -28,7 +24,7 @@ const CheckExistingUser = () => {
       setUUID(user.email);
     }
     if (userEmail !== "" && userEmail !== undefined) {
-      mutate({ userEmail: userEmail, accessToken: accessToken });
+      mutate({ data: userEmail, accessToken: accessToken });
     }
   }
   if (userExists === undefined) {
