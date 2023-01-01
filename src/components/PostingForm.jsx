@@ -6,24 +6,10 @@ import PostIdeaList from "./PostIdeaList";
 import "./cssFiles/Posting.css";
 import ReactPlayer from "react-player/lazy";
 import PostTag1 from "./PostTag1";
+import PostTag2 from "./PostTag2";
+import PostTag3 from "./PostTag3";
 
 const PostingForm = (props) => {
-  /*   const [inputTag1, setInputTag1] = useState("");
-  const [inputTag2, setInputTag2] = useState("");
-  const [inputTag3, setInputTag3] = useState("");
-
-  const handleTag1Change = (newTag) => {
-    setInputTag1(newTag);
-  };
-
-  const handleTag2Change = (newTag) => {
-    setInputTag2(newTag);
-  };
-
-  const handleTag3Change = (newTag) => {
-    setInputTag3(newTag);
-  }; */
-
   return (
     <div className="postForm">
       <div className="postFormTopInput">
@@ -83,14 +69,14 @@ const PostingForm = (props) => {
           inputTag1={props.inputTag1}
           handleTag1Change={props.handleTag1Change}
         />
-        {/* <PostTag
+        <PostTag2
           inputTag2={props.inputTag2}
           handleTag2Change={props.handleTag2Change}
         />
-        <PostTag
+        <PostTag3
           inputTag3={props.inputTag3}
           handleTag3Change={props.handleTag3Change}
-        /> */}
+        />
       </div>
       <div>
         <PostUploadPhotoVideo

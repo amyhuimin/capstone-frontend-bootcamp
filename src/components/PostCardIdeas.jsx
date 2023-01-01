@@ -8,9 +8,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ReadMore from "./ReadMore";
 import FollowButton from "./FollowButton";
-import CommentsSection from "./comments2";
+import Comments from "./Comments2";
 
-const PostCardTextOnly = (content) => {
+const PostCardIdeas = (content) => {
   return (
     <div className="postCard">
       <Card className="cards">
@@ -92,10 +92,12 @@ const PostCardTextOnly = (content) => {
             {content.content.NumberFollowers} Following
           </Typography>
         </CardActions>
-        <CommentsSection />
+      </Card>
+      <Card>
+        <Comments />
       </Card>
     </div>
   );
 };
 
-export default PostCardTextOnly;
+export default PostCardIdeas;

@@ -16,6 +16,8 @@ const CreatePostCard = () => {
     videoURL: "",
   });
   const [inputTag1, setInputTag1] = useState("");
+  const [inputTag2, setInputTag2] = useState("");
+  const [inputTag3, setInputTag3] = useState("");
 
   const handleTextChange = (newText) => {
     setInputText(newText);
@@ -36,6 +38,14 @@ const CreatePostCard = () => {
     setInputTag1(newTag);
   };
 
+  const handleTag2Change = (newTag) => {
+    setInputTag2(newTag);
+  };
+
+  const handleTag3Change = (newTag) => {
+    setInputTag3(newTag);
+  };
+
   return (
     <div className="postCard">
       <Card className="cards">
@@ -54,6 +64,10 @@ const CreatePostCard = () => {
               handleUploadChange={handleUploadChange}
               inputTag1={inputTag1}
               handleTag1Change={handleTag1Change}
+              inputTag2={inputTag2}
+              handleTag2Change={handleTag2Change}
+              inputTag3={inputTag3}
+              handleTag3Change={handleTag3Change}
             />
           </div>
           <div className="postButtonArea">
@@ -69,6 +83,10 @@ const CreatePostCard = () => {
                 handleUploadChange={handleUploadChange}
                 inputTag1={inputTag1}
                 handleTag1Change={handleTag1Change}
+                inputTag2={inputTag2}
+                handleTag2Change={handleTag2Change}
+                inputTag3={inputTag3}
+                handleTag3Change={handleTag3Change}
               />
             </div>
             <div>
@@ -83,6 +101,10 @@ const CreatePostCard = () => {
                 handleUploadChange={handleUploadChange}
                 inputTag1={inputTag1}
                 handleTag1Change={handleTag1Change}
+                inputTag2={inputTag2}
+                handleTag2Change={handleTag2Change}
+                inputTag3={inputTag3}
+                handleTag3Change={handleTag3Change}
               />
             </div>
             <div>
@@ -97,6 +119,10 @@ const CreatePostCard = () => {
                 handleUploadChange={handleUploadChange}
                 inputTag1={inputTag1}
                 handleTag1Change={handleTag1Change}
+                inputTag2={inputTag2}
+                handleTag2Change={handleTag2Change}
+                inputTag3={inputTag3}
+                handleTag3Change={handleTag3Change}
               />
             </div>
           </div>

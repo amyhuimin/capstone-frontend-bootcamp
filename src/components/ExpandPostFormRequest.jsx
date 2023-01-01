@@ -107,6 +107,10 @@ const ExpandPostFormRequest = (props) => {
             handleUploadChange={props.handleUploadChange}
             inputTag1={props.inputTag1}
             handleTag1Change={props.handleTag1Change}
+            inputTag2={props.inputTag2}
+            handleTag2Change={props.handleTag2Change}
+            inputTag3={props.inputTag3}
+            handleTag3Change={props.handleTag3Change}
           />
         </DialogContent>
 
@@ -119,6 +123,8 @@ const ExpandPostFormRequest = (props) => {
             inputIdea={props.inputIdea}
             inputUpload={props.inputUpload}
             inputTag1={props.inputTag1}
+            inputTag2={props.inputTag2}
+            inputTag3={props.inputTag3}
           />
         </DialogActions>
       </BootstrapDialog>

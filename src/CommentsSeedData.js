@@ -1,6 +1,6 @@
 const postCommentData = [
   {
-    postUUID: 5,
+    PostUUID: 5,
     postCommentID: 1,
     userID: 1,
     comment:
@@ -16,7 +16,7 @@ const postCommentData = [
     replies: [],
   },
   {
-    postUUID: 1,
+    PostUUID: 1,
     postCommentID: 1,
     userID: 5,
     comment: "I can connect you with someone who is a collector. Will PM you.",
@@ -24,7 +24,7 @@ const postCommentData = [
   },
 
   {
-    postUUID: 3,
+    PostUUID: 3,
     postCommentID: 1,
     userID: 2,
     comment:
@@ -33,7 +33,7 @@ const postCommentData = [
   },
 
   {
-    postUUID: 3,
+    PostUUID: 3,
     postCommentID: 2,
     userID: 4,
     comment:
@@ -42,7 +42,7 @@ const postCommentData = [
   },
 
   {
-    postUUID: 5,
+    PostUUID: 5,
     postCommentID: 3,
     userID: 4,
     comment:
@@ -50,3 +50,5 @@ const postCommentData = [
     replies: [],
   },
 ];
+
+export { postCommentData };
