@@ -14,7 +14,7 @@ function FollowedItems(props) {
     onSuccess: (data) => setuserName(data.userName),
     retry: false,
   });
-  console.log(props.name)
+  // console.log(props.name)
 
   async function checkUser() {
     const accessToken = await getAccessTokenSilently({

@@ -1,64 +1,78 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Box from "@mui/material/Box";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Popover from "@mui/material/Popover";
+// import Card from "react-bootstrap/Card";
+// import Button from "react-bootstrap/Button";
+// import Box from "@mui/material/Box";
+// import EditIcon from "@mui/icons-material/Edit";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import Popover from "@mui/material/Popover";
 // import EditPropertyForm from "./EditPropertyForm.js";
 
-import { BACKEND_URL } from "../constants.js";
+// import { BACKEND_URL } from "../constants.js";
+import RightNewsBar from "./RightNewsBar";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icon } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
+const BACKEND_URL = "http://localhost:4000";
 
-const PerIdea = () => {
+const PerIdeaPage = () => {
   const [ideaId, setIdeaId] = useState();
   const [idea, setIdea] = useState({});
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // If there is a listingId, retrieve the listing data
-    if (ideaId) {
+    console.log("idea id" + ideaId)
+    // If there is an ideaId, retrieve the idea data
+    if (ideaId !== undefined) {
       axios.get(`${BACKEND_URL}/idea/get/${ideaId}`).then((response) => {
+        console.log(response)
         setIdea(response.data);
       });
+      
     }
-    // Only run this effect on change to listingId
+    // Only run this effect on change to ideaId
   }, [ideaId]);
 
   // Update listing ID in state if needed to trigger data retrieval
   const params = useParams();
-  if (ideaId !== params.ideaId) {
-    setIdeaId(params.ideaId);
+  console.log(params)
+  if (ideaId !== params.IdeaId) {
+    setIdeaId(params.IdeaId);
   }
-  console.log(idea);
+
+  console.log(idea)
+  console.log(idea.IdeaName)
 
   // Functions for Edit button Popover
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popover" : undefined;
 
   // Function for Delete Button
-  const handleDelete = async (id, home_name) => {
-    await axios.delete(`${BACKEND_URL}/idea/get/${id}`);
-    // console.log(`${ideaName} successfully deleted.`);
-    navigate("/LandingPage");
-  };
+  // const handleDelete = async (id, home_name) => {
+  //   await axios.delete(`${BACKEND_URL}/idea/get/${id}`);
+  //   // console.log(`${ideaName} successfully deleted.`);
+  //   navigate("/ideas");
+  // };
 
   return (
-    "Per idea page"
+    <div className="landingPage">
+      <div className="postFeed">
+        <h1>{idea.IdeaName}</h1>
+
+      </div>
+      <div className="newsFeed">
+        <RightNewsBar />
+      </div>
+    </div>
   );
 };
 
-export default PerIdea;
+export default PerIdeaPage;

@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import IdeasPage from "./components/IdeasPage";
 import TopNavBar from "./components/TopNavBar";
 import CheckExistingUser from "./components/CheckExistingUser";
+import PerIdeaPage from "./components/PerIdeaPage";
 
 // import customtheme from "./style/theme"
 
@@ -50,6 +51,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/ideas" element={<IdeasPage />} />
+          <Route path="/idea/get/:IdeaId" element={<PerIdeaPage />} />
           <Route path="/NewUserForm" element={<CheckExistingUser />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
