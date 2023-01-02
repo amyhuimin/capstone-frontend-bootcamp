@@ -14,9 +14,8 @@ import PostCardWithVideo from "./PostCardWithVideo";
 import PostCardWithVideoImage from "./PostCardWithVideoImage";
 import PostCardIdeas from "./PostCardIdeas";
 import CreatePostCard from "./CreatePostCard";
-import CommentsSection from "./comments2.jsx";
-
 import "./cssFiles/newsfeed.css";
+import CommentSec from "./CommentSec.jsx";
 
 function NewsFeed() {
   //React Query hook
@@ -33,7 +32,6 @@ function NewsFeed() {
         <Box bgcolor="transparent">
           <div className="newsfeedscroll">
             <CreatePostCard />
-
             {data.data.map((post) => {
               if (post.IdeaId != null) {
                 return <PostCardIdeas key={post.Id} content={post} />;
