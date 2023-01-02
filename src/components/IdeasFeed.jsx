@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //React Query imports
 import { PostsQuery } from "../Queries.js";
+import { getUserIdeas } from "../Queries.js";
 import { useQuery } from "@tanstack/react-query";
 
 import "./cssFiles/rightNewsBar.css";
@@ -11,43 +12,51 @@ import Box from "@mui/material/Box";
 import PostCardTextOnly from "./PostCardTextOnly.jsx";
 import PostCardWithImg from "./PostCardWithImg";
 import PostCardWithVideo from "./PostCardWithVideo";
-// import PostCardWithVideoImage from "./PostCardWithVideoImage";
+import PostCardWithVideoImage from "./PostCardWithVideoImage";
 import PostCardIdeas from "./PostCardIdeas";
 // import CreatePostCard from "./CreatePostCard";
 
 import "./cssFiles/newsfeed.css";
+import FollowedItems from "./FollowedItems.jsx";
 
-function IdeasFeed() {
+function IdeasFeed(props) {
   //React Query hook
+  const [followedItems, setFollowedItems] = useState(null);
   const { isLoading, data, isError } = useQuery(
-    ["posts"], //[key(Ownself name it), props]
-    () => PostsQuery() //function you want to use from Queries.js
+    ["followedIdea", props], //[key(Ownself name it), props]
+    (props) => getUserIdeas(props) //function you want to use from Queries.js
   );
+  useEffect(() => {
+    if (data !== null && data !== undefined) {
+      setFollowedItems(Object.values(data));
+    }
+  }, [data]);
+  if (isLoading) {
+    return <div>is Loading</div>;
+  } else if (isError) {
+    return <div>Error Loading</div>;
+  }
 
-  if (!isLoading && !isError) {
-    console.log(data);
-
+  if (followedItems !== null) {
+    console.log(followedItems);
     return (
-      <div className="ideasfeed">
-        <Box bgcolor="transparent">
-          <div className="ideasfeedscroll">
-            {/* <CreatePostCard /> */}
-
-            {data.data.map((post) => {
-              if (post.IdeaId != null) {
-                return <PostCardIdeas key={post.Id} content={post} />;
-              } else if (post.VideoURL != null && post.ImgURL === null) {
-                return <PostCardWithVideo key={post.Id} content={post} />;
-              } else if (post.ImgURL != null && post.VideoURL === null) {
-                return <PostCardWithImg key={post.Id} content={post} />;
-              } else {
-                return <PostCardTextOnly key={post.Id} content={post} />;
-              }
-            })}
-          </div>
-        </Box>
+      <div>
+        <h1 style={{ marginLeft: 10 }}>My Ideas</h1>
+        {followedItems.map((item) => {
+          console.log(item.id);
+          return (
+            <FollowedItems
+              key={item.id}
+              name={item.UserId}
+              img={item.IdeaProfileImgURL}
+              extra={item.IdeaName}
+            />
+          );
+        })}
       </div>
     );
+  } else {
+    return <div></div>;
   }
 }
 

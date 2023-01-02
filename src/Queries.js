@@ -55,7 +55,7 @@ async function GetAnIdea(props) {
 
 async function getUserIdeas(props) {
   const { data } = await axios.get(
-    `${BackEndUrl}/idea/all/${props.queryKey[1].UserId}`
+    `${BackEndUrl}/idea/all/${props.queryKey[1].UserId}` //props.queryKey[1] = {UserId : 1}
   );
   return data;
 }
