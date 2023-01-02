@@ -41,7 +41,7 @@ export const postCommentData = async () => {
       userId: 2,
       comment:
         "Sounds exciting! Would love to know how this idea progress. Idea followed!",
-
+      replies: [],
       createdAt: "2021-08-16T23:00:33.010+02:00",
     },
 
