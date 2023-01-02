@@ -41,15 +41,21 @@ async function PostAnIdea(props) {
 }
 
 async function GetAPost(props) {
-  const { data } = await axios.get(
-    `${BackEndUrl}/get/${props.queryKey[1]}`
-  );
+  const { data } = await axios.get(`${BackEndUrl}/get/${props.queryKey[1]}`);
   return data;
 }
 
 async function GetAnIdea(props) {
   const { data } = await axios.get(
     `${BackEndUrl}/idea/get/${props.queryKey[1]}`
+  );
+  console.log(data);
+  return data;
+}
+
+async function getUserIdeas(props) {
+  const { data } = await axios.get(
+    `${BackEndUrl}/idea/all/${props.queryKey[1].UserId}`
   );
   return data;
 }
@@ -100,4 +106,5 @@ export {
   makeNewUser,
   GetAPost,
   GetAnIdea,
+  getUserIdeas,
 };

@@ -14,15 +14,18 @@ function CreateFollowedIdeas(followedIdea) {
   if (isError) {
     return <div>Error Loading</div>;
   }
-  // console.log(data);
-  return (
-    <FollowedItems
-      key={data.IdeaId}
-      name={data.UserId}
-      img={data.IdeaProfileImgURL}
-      extra={data.IdeaName}
-    />
-  );
+  if (data !== null) {
+    return (
+      <FollowedItems
+        key={data.IdeaId}
+        name={data.UserId}
+        img={data.IdeaProfileImgURL}
+        extra={data.IdeaName}
+      />
+    );
+  } else {
+    return <></>;
+  }
 }
 
 function FollowedIdeas(props) {
