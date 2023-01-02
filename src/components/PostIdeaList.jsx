@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { ideaData } from "../IdeaSeedData";
+import { ideaData } from "../IdeaSeedData.js";
 
 export default function PostIdeaList(props) {
+  const [menu, setMenu] = useState();
+
   const handleChange = (event) => {
-    props.handleIdeaChange(event.target.value);
+    setMenu(event.target.value);
+    /* props.handleIdeaChange(event.target.value); */
   };
+
+  useEffect(() => {
+    props.handleIdeaChange(menu);
+  }, [menu]);
+
+  const newArray = Object.values(ideaData);
 
   return (
     <div>
@@ -23,7 +32,13 @@ export default function PostIdeaList(props) {
           <MenuItem value="">
             <em>Which idea are you posting for</em>
           </MenuItem>
-          <MenuItem value={ideaData.ideaID}>{ideaData.ideaName}</MenuItem>
+          {newArray.map((item) => {
+            return (
+              <MenuItem key={item.ideaId} value={item.ideaName}>
+                {item.ideaName}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
     </div>

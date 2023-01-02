@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { styled } from "@mui/material/styles";
@@ -17,27 +17,35 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const PostButton = (props) => {
-  const oneLinerText = () => {
-    if (props.inputIdea == ideaData.ideaName) {
-      return ideaData.oneliner;
-    } else {
-      return "Error";
-    }
-  };
-
   const [data, setData] = useState({
     date: new Date(),
     user: "Jordan",
     ideaName: props.inputIdea,
-    oneliner: { oneLinerText },
+    oneliner: null,
     text: props.inputText,
-    imgURL: props.inputUpload.imgURL,
+    imgURL: props.inputUpload.imageURL,
     videoURL: props.inputUpload.videoURL,
     requestType: props.inputRequest,
     tag1: props.inputTag1,
     tag2: props.inputTag2,
     tag3: props.inputTag3,
   });
+
+  /*   const oneLinerText = () => { */
+  useEffect(() => {
+    console.log(props.inputIdea);
+    for (var i = 0; i < ideaData.length; i++) {
+      console.log(ideaData[i].ideaName);
+      if (props.inputIdea === ideaData[i].ideaName) {
+        const newData = data;
+        newData.oneliner = ideaData[i].oneLiner;
+        setData(newData);
+        console.log(newData);
+      }
+    }
+  }, [props.inputIdea]);
+
+  /*  }; */
 
   const handleChange = (event) => {
     props.handleCloseChange(event.target.event);
