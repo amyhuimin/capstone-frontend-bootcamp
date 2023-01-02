@@ -11,7 +11,7 @@ function FollowedItems(props) {
   const { user, getAccessTokenSilently } = useAuth0();
   const [userName, setuserName] = useState("");
   const { data, mutate } = useMutation((props) => getCurrentUser(props), {
-    onSuccess: (data) => setuserName(data.setuserName),
+    onSuccess: (data) => setuserName(data.UserName),
     retry: false,
   });
 
