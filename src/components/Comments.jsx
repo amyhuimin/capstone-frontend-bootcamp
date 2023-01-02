@@ -1,42 +1,58 @@
-import { Avatar } from "@mui/material";
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { postCommentData, createComment } from "../CommentsSeedData";
+import Comment from "./Comment";
+import CommentInput from "./CommentInput";
 
-const CommentsSection = ({ postId }) => {
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+const Comments = ({ currentUserId }) => {
+  const [seedComments, setSeedComments] = useState([]);
+  const [activeComment, setActiveCommment] = useState(null);
 
-  const handleChange = (event) => {
-    setNewComment(event.target.value);
+  const rootComment = seedComments.filter(
+    (seedComments) => seedComments.postCommentID === 1
+  );
+  const getReplies = (commentId) => {
+    return seedComments
+      .filter((seedComments) => seedComments.postCommentID === commentId)
+      .sort(
+        (a, b) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+      );
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Add the new comment to the list of comments
-    setComments([...comments, newComment]);
-    // Clear the input field
-    setNewComment("");
+  const addComment = (comment, postCommentID) => {
+    console.log("addComment", comment, postCommentID);
+    createComment(comment, postCommentID).then((text) => {
+      setSeedComments([text, ...seedComments]);
+      setActiveCommment(null);
+    });
   };
+
+  useEffect(() => {
+    postCommentData().then((data) => {
+      setSeedComments(data);
+    });
+  }, []);
 
   return (
-    <div>
-      {comments.map((comment) => (
-        <p>{comment}</p>
-      ))}
-      <form onSubmit={handleSubmit}>
-        <label>
-          <Avatar></Avatar>
-          <input
-            type="text"
-            value={newComment}
-            onChange={handleChange}
-            placeholder="add a comment"
+    <div classname="comments">
+      <h3 className="comments-title">Comment</h3>
+      <CommentInput submitLabel="Write" handleInputSubmit="addComment" />
+      <div className="comments-container">
+        {rootComment.map((rootComment) => (
+          <Comment
+            key={rootComment.id}
+            comment={rootComment}
+            replies={getReplies(rootComment.id)}
+            currentUserId={currentUserId}
+            activeComment={activeComment}
+            setActiveCommment={activeComment}
+            addComment={addComment}
           />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default CommentsSection;
+export default Comments;

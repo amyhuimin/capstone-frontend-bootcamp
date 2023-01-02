@@ -12,6 +12,8 @@ import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
+import CommentSec from "./CommentSec";
+import CommentInput from "./CommentInput";
 /* import Comments from "./Comments2";
 import CommmentsSection from "./Comments"; */
 
@@ -117,19 +119,20 @@ const PostCardTextOnly = (content) => {
             >
               {content.content.NumberFollowers} Following
             </Typography>
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              View Comments
-              {/* <ExpandMoreIcon /> */}
-            </ExpandMore>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>Text text</CardContent>
-            </Collapse>
           </CardActions>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            View Comments
+          </ExpandMore>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>Text text</CardContent>
+          </Collapse>
+          <CommentSec />
+          <CommentInput />
         </Card>
       </div>
     </div>

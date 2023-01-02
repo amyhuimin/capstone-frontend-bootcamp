@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { postCommentData } from "../CommentsSeedData";
 import { userData } from "../userData";
 
-const Comments = () => {
-  const [comments, setComments] = useState([]);
+const CommentsOld = (postCommentData) => {
+  const [comments, setComments] = useState(postCommentData);
   const [newComment, setNewComment] = useState("");
   const [newReply, setNewReply] = useState("");
   const [selectedComment, setSelectedComment] = useState(null);
@@ -13,7 +13,8 @@ const Comments = () => {
     const newReply = event.target.elements.reply.value;
     setComments((prevComments) =>
       prevComments.map((comment) => {
-        if (comment.id === commentId) {
+        /* if (comment.id === commentId) { */
+        if (postCommentData.postCommentID === commentId) {
           return {
             ...comment,
             replies: [...comment.replies, newReply],
@@ -69,30 +70,4 @@ const Comments = () => {
   );
 };
 
-export default Comments;
-
-{
-  /* 
-      <ul>
-        {comments.map((postCommentData) => (
-          <li key={postCommentData.postCommentID}>
-            <p>{postCommentData.comment}</p>
-            <p>
-              By:{" "}
-              {postCommentData.userId == userData.Id ? userData.user : "error"}
-            </p>
-            <form
-              onSubmit={(event) =>
-                handleReplySubmit(event, postCommentData.postCommentID)
-              }
-            >
-              <input name="reply" />
-              <button type="submit">Submit</button>
-            </form>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}; */
-}
+export default CommentsOld;

@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ReadMore from "./ReadMore";
 import FollowButton from "./FollowButton";
-import Comments from "./comments2";
+import Comments from "./CommentsOld";
 
 const PostCardIdeas = (content) => {
   return (
@@ -92,9 +92,6 @@ const PostCardIdeas = (content) => {
             {content.content.NumberFollowers} Following
           </Typography>
         </CardActions>
-      </Card>
-      <Card>
-        <Comments />
       </Card>
     </div>
   );
