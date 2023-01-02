@@ -40,7 +40,7 @@ export default function NewIdeaForm() {
   });
   const { isLoading, data, isError } = useQuery(["currentUser"], () =>
     getCurrentUser({
-      userEmail: user.email,
+      data: user.email,
       accessToken: async () => await getUserInfo(),
     })
   );
@@ -276,6 +276,7 @@ export default function NewIdeaForm() {
   };
 
   const handleSubmit = async () => {
+    console.log("handlesubmit"+data)
     const newIdea = {
       IdeaId: parseInt(data.Ideas) + 1,
       UserId: data.Id,
