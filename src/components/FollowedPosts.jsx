@@ -17,21 +17,26 @@ function CreateFollowedPosts(followedPost) {
   }
   return (
     <FollowedItems
-      key={followedPost.id}
-      name={followedPost.user}
-      img={followedPost.imgURL}
-      extra={followedPost.postText}
+      key={data.Id}
+      name={data.User}
+      img={data.ImgURL}
+      oneLinerDesc={data.IdeaName}
     />
   );
 }
 
-function FollowedPosts() {
-  return (
-    <div>
-      <h1 style={{ marginLeft: 10 }}>Followed Posts</h1>
-      {followedPosts.map(CreateFollowedPosts)}
-    </div>
-  );
+function FollowedPosts(props) {
+  var followedPosts = props.data;
+  if (followedPosts !== null && followedPosts !== undefined) {
+    return (
+      <div>
+        <h1 style={{ marginLeft: 10 }}>Followed Posts</h1>
+        {followedPosts.map((followedPost) => CreateFollowedPosts(followedPost))}
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
 }
 
 export default FollowedPosts;

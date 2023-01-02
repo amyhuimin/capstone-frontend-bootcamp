@@ -6,7 +6,7 @@ import "./cssFiles/FollowedIdeas.css";
 function PostItems(props) {
   return (
     <div className="FollowedItems">
-      <Avatar img={props.img} />
+      {props.img !== null ? <Avatar img={props.img} /> : <></>}
       <div className="FollowedItemsProps">
         <Detail detailInfo={props.date} fontWeight={200} />
         <Detail detailInfo={props.name} fontWeight={700} />
