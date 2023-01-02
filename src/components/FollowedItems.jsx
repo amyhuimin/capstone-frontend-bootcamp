@@ -11,9 +11,10 @@ function FollowedItems(props) {
   const { user, getAccessTokenSilently } = useAuth0();
   const [userName, setuserName] = useState("");
   const { data, mutate } = useMutation((props) => getCurrentUser(props), {
-    onSuccess: (data) => setuserName(data.setuserName),
+    onSuccess: (data) => setuserName(data.userName),
     retry: false,
   });
+  console.log(props.name)
 
   async function checkUser() {
     const accessToken = await getAccessTokenSilently({
@@ -23,6 +24,7 @@ function FollowedItems(props) {
     mutate({ data: props.name, accessToken: accessToken });
   }
   useEffect(() => checkUser(), []);
+  // console.log(userName)
   if (userName !== "") {
     return (
       <div className="FollowedItems">
