@@ -14,6 +14,7 @@ function FollowedItems(props) {
     onSuccess: (data) => setuserName(data.UserName),
     retry: false,
   });
+  console.log(props.name);
 
   async function checkUser() {
     const accessToken = await getAccessTokenSilently({
@@ -23,6 +24,7 @@ function FollowedItems(props) {
     mutate({ data: props.name, accessToken: accessToken });
   }
   useEffect(() => checkUser(), []);
+  // console.log(userName)
   if (userName !== "") {
     return (
       <div className="FollowedItems">

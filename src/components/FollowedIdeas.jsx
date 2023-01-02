@@ -14,7 +14,7 @@ function CreateFollowedIdeas(followedIdea) {
   if (isError) {
     return <div>Error Loading</div>;
   }
-  console.log(data);
+  // console.log(data);
   return (
     <FollowedItems
       key={data.IdeaId}

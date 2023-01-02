@@ -40,6 +40,13 @@ async function PostAnIdea(props) {
   return;
 }
 
+async function GetAPost(props) {
+  const { data } = await axios.get(
+    `${BackEndUrl}/get/${props.queryKey[1]}`
+  );
+  return data;
+}
+
 async function GetAnIdea(props) {
   const { data } = await axios.get(
     `${BackEndUrl}/idea/get/${props.queryKey[1]}`
@@ -91,5 +98,6 @@ export {
   PostAnIdea,
   getCurrentUser,
   makeNewUser,
+  GetAPost,
   GetAnIdea,
 };
