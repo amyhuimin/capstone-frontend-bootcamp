@@ -3,14 +3,22 @@ import { useEffect } from "react";
 import { postCommentData, createComment } from "../CommentsSeedData";
 import Comment from "./Comment";
 import CommentInput from "./CommentInput";
+import { postData } from "../PostSeedData";
 
 const Comments = ({ currentUserId }) => {
   const [seedComments, setSeedComments] = useState([]);
   const [activeComment, setActiveCommment] = useState(null);
 
   const rootComment = seedComments.filter(
-    (seedComments) => seedComments.postCommentID === 1
+    (seedComments) =>
+      seedComments.PostUUID === 5 && seedComments.postCommentID === 1
+    /* &&
+      seedComments.PostUUID === postData.PostUUID */
   );
+  /* console.log("seedComments", seedComments); */
+  console.log("rootComment", rootComment);
+  /*console.log("postData", postData); */
+
   const getReplies = (commentId) => {
     return seedComments
       .filter((seedComments) => seedComments.postCommentID === commentId)
@@ -35,9 +43,7 @@ const Comments = ({ currentUserId }) => {
   }, []);
 
   return (
-    <div classname="comments">
-      <h3 className="comments-title">Comment</h3>
-      <CommentInput submitLabel="Write" handleInputSubmit="addComment" />
+    <div className="comments">
       <div className="comments-container">
         {rootComment.map((rootComment) => (
           <Comment
@@ -51,6 +57,7 @@ const Comments = ({ currentUserId }) => {
           />
         ))}
       </div>
+      <CommentInput submitLabel="Write" handleSubmit="addComment" />
     </div>
   );
 };

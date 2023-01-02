@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
-const CommentInput = ({ handleInputSubmit, submitLabel }) => {
+const CommentInput = ({ handleSubmit, submitLabel }) => {
   const [newComment, setNewComment] = useState("");
   const isTextareaDisabled = newComment.length === 0;
   const handleChange = (event) => {
     setNewComment(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    handleInputSubmit(newComment);
+    handleSubmit(newComment);
     setNewComment("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
       <textarea
         className="comment-form-textarea"
         value={newComment}

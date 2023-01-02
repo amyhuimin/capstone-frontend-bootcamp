@@ -22,17 +22,15 @@ const Comment = ({
   const replyId = postCommentID ? postCommentID : comment.id;
 
   return (
-    <div className="comment">
+    <div key={comment.id} className="comment">
       <div className=" comment-image-container">
         <Avatar
-          src={comment.userId === userData.userId ? "error" : userData.imgURL}
+          src={comment.userId == userData.userId ? "error" : userData.imgURL}
         />
       </div>
       <div classname="comment-right-part">
         <div className="comment-contect">
-          <div className="comment-author">
-            {comment.userId === userData.userId ? "error" : userData.user}
-          </div>
+          <div className="comment-author">{comment.user}</div>
           <div>{createdAt}</div>
         </div>
         <div className="comment-text">{comment.comment}</div>
@@ -64,7 +62,7 @@ const Comment = ({
               <Comment
                 comment={reply}
                 key={reply.id}
-                replies={[]}
+                replies={comment.replies}
                 currentUserId={currentUserId}
                 addComment={addComment}
                 activeComment={activeComment}
