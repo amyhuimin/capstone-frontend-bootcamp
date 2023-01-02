@@ -14,7 +14,7 @@ import PostCardWithVideo from "./PostCardWithVideo";
 import PostCardWithVideoImage from "./PostCardWithVideoImage";
 import PostCardIdeas from "./PostCardIdeas";
 import CreatePostCard from "./CreatePostCard";
-import CommentsSection from "./Comments2.jsx";
+import CommentsSection from "./comments2.jsx";
 
 import "./cssFiles/newsfeed.css";
 

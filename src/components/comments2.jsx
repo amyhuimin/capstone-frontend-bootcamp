@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { postCommentData } from "../commentsSeedData";
+import { postCommentData } from "../CommentsSeedData";
 import { userData } from "../userData";
 
 const Comments = () => {
