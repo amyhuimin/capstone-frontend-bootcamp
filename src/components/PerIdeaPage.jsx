@@ -14,7 +14,7 @@ import { BACKEND_URL } from "../constants.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
 
-const PropertyListing = () => {
+const PerIdea = () => {
   const [ideaId, setIdeaId] = useState();
   const [idea, setIdea] = useState({});
   const [anchorEl, setAnchorEl] = useState(null);
@@ -23,8 +23,8 @@ const PropertyListing = () => {
   useEffect(() => {
     // If there is a listingId, retrieve the listing data
     if (ideaId) {
-      axios.get(`${BACKEND_URL}/ideas/${ideaId}`).then((response) => {
-        setIdeaId(response.data);
+      axios.get(`${BACKEND_URL}/idea/get/${ideaId}`).then((response) => {
+        setIdea(response.data);
       });
     }
     // Only run this effect on change to listingId
@@ -51,7 +51,7 @@ const PropertyListing = () => {
 
   // Function for Delete Button
   const handleDelete = async (id, home_name) => {
-    await axios.delete(`${BACKEND_URL}/ideas/${id}`);
+    await axios.delete(`${BACKEND_URL}/idea/get/${id}`);
     // console.log(`${ideaName} successfully deleted.`);
     navigate("/LandingPage");
   };
@@ -61,4 +61,4 @@ const PropertyListing = () => {
   );
 };
 
-export default PropertyListing;
+export default PerIdea;
