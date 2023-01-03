@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "@mui/material";
 
 //React Query imports
@@ -40,16 +41,16 @@ function IdeasFeed(props) {
         {myIdeas.map((item) => {
           console.log("items" + item);
           return (
-            <IdeaCard
-              key={item.id}
-              name={item.UserId}
-              img={item.IdeaProfileImgURL}
-              ideaName={item.IdeaName}
-              oneLiner={item.OneLiner}
-              generatedDate={item.createdAt}
-              // comments={item.Comments}
-              //status={item.status}
-            />
+              <IdeaCard
+                key={item.id}
+                name={item.UserId}
+                img={item.IdeaProfileImgURL}
+                ideaName={item.IdeaName}
+                oneLiner={item.OneLiner}
+                generatedDate={item.createdAt}
+                // comments={item.Comments}
+                //status={item.status}
+              />
           );
         })}
       </div>

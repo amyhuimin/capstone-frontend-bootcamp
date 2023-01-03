@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
-import Detail from "./Detail";
 import { useMutation } from "@tanstack/react-query";
 import { getCurrentUser } from "../Queries";
 import { useAuth0 } from "@auth0/auth0-react";
-import "./cssFiles/FollowedIdeas.css";
+import "./cssFiles/IdeaCard.css";
 import { useEffect } from "react";
 import { getUserIdeas } from "../Queries";
 import { useQuery } from "@tanstack/react-query";
@@ -30,24 +30,28 @@ function IdeaCard(props) {
       scope: "read:current_user",
     });
     mutate({ data: props.name, accessToken: accessToken });
-    console.log("data" + props.name)
+    // console.log("data" + props.name)
   }
   useEffect(() => checkUser(), []);
   // console.log(userName)
   if (userName !== "") {
+    console.log("props.name" + props.name);
     return (
       <div className="postCard">
-        <Card className="cards" style={{ padding: "2% 2% 2% 2%" }}>
+        <Card className="cards">
           <div className="ideaDate">
             <span className="ideaCardDateCreated">
               Generated: {props.generatedDate}
             </span>
           </div>
-          <CardHeader
-            avatar={<Avatar img={props.img} />}
-            title={props.ideaName}
-            subheader={props.oneLiner}
-          />
+          <Link to={`/idea/get/${props.name}`} key={props.name}>
+            
+            <CardHeader
+              avatar={<Avatar img={props.img} />}
+              title={props.ideaName}
+              subheader={props.oneLiner}
+            />
+          </Link>
           {/* Backend ideas info do not have status yet */}
           <div className="status">
             {props.status === "Private" ? (

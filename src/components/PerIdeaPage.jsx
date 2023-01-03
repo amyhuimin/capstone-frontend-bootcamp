@@ -1,3 +1,4 @@
+import { Avatar, Card, Paper } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
@@ -11,6 +12,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 // import { BACKEND_URL } from "../constants.js";
 import RightNewsBar from "./RightNewsBar";
+import "./cssFiles/PerIdeaPage.css";
 
 const BACKEND_URL = "http://localhost:4000";
 
@@ -40,9 +42,6 @@ const PerIdeaPage = () => {
     setIdeaId(params.IdeaId);
   }
 
-  console.log(idea)
-  console.log(idea.IdeaName)
-
   // Functions for Edit button Popover
   // const handleClick = (event) => {
   //   setAnchorEl(event.currentTarget);
@@ -65,8 +64,11 @@ const PerIdeaPage = () => {
   return (
     <div className="landingPage">
       <div className="postFeed">
-        <h1>{idea.IdeaName}</h1>
-
+        <Paper>
+          <span className="span.a"><Avatar img={idea.IdeaProfileImgURL} /></span> <span>{idea.IdeaName} </span>
+          <br />
+          {idea.OneLiner}
+        </Paper>
       </div>
       <div className="newsFeed">
         <RightNewsBar />

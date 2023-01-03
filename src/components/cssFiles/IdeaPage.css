@@ -1,0 +1,55 @@
+.ideaPage {
+  display: flex;
+  flex-flow: row;
+  margin: 0%;
+}
+
+.ideaFeed {
+  width: 70%;
+  height: 96vh;
+}
+
+.newsFeed {
+  margin-right: 8%;
+  padding-left: 1%;
+  padding-top: 1%;
+  padding-right: 0%;
+  width: 20%;
+  height: 96vh;
+}
+
+.topcard{
+  border-color: lightgray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1%;
+  box-shadow: 5px 5px grey;
+  border-color: lightgray;
+  border-style: solid;
+  /* border-width: 1px; */
+  border-width: 0px;
+  border-radius: 1%;
+  box-shadow: 5px 5px 10px grey;
+  margin-bottom: 5%;
+  margin-top: 0%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.ideaCard {
+  border-color: lightgray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1%;
+  box-shadow: 5px 5px grey;
+  border-color: lightgray;
+  border-style: solid;
+  /* border-width: 1px; */
+  border-width: 0px;
+  border-radius: 1%;
+  box-shadow: 5px 5px 10px grey;
+  margin-bottom: 5%;
+  margin-top: 0%;
+  margin-left: 1%;
+  margin-right: 1%;
+}

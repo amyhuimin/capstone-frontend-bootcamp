@@ -152,15 +152,11 @@ export default function PrimarySearchAppBar(prop) {
           href="/"
           rel="noreferrer"
         >
-          <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="inherit"
-          >
-            <Badge badgeContent={2} color="error">
+
+
               <HomeIcon />
-            </Badge>
-          </IconButton>
+
+
         </a>
         <p>Home</p>
       </MenuItem>
