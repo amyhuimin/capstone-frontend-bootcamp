@@ -49,7 +49,7 @@ async function GetAnIdea(props) {
   const { data } = await axios.get(
     `${BackEndUrl}/idea/get/${props.queryKey[1]}`
   );
-  console.log(data);
+  // console.log(data);
   return data;
 }
 

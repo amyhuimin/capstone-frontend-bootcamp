@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Card } from "@mui/material";
 
 //React Query imports
 import { PostsQuery } from "../Queries.js";
@@ -45,12 +46,12 @@ function IdeasFeed(props) {
         {followedItems.map((item) => {
           console.log(item.id);
           return (
-            <FollowedItems
-              key={item.id}
-              name={item.UserId}
-              img={item.IdeaProfileImgURL}
-              extra={item.IdeaName}
-            />
+              <FollowedItems
+                key={item.id}
+                name={item.UserId}
+                img={item.IdeaProfileImgURL}
+                extra={item.IdeaName}
+              />
           );
         })}
       </div>
