@@ -1,63 +1,68 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { postCommentData, createComment } from "../CommentsSeedData";
-import Comment from "./Comment";
-import CommentInput from "./CommentInput";
-import { postData } from "../PostSeedData";
+import { useContext, useState } from "react";
+import "./comments.scss";
+import { AuthContext } from "../../context/authContext";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+import moment from "moment";
 
-const Comments = ({ currentUserId }) => {
-  const [seedComments, setSeedComments] = useState([]);
-  const [activeComment, setActiveCommment] = useState(null);
+const Comments = ({ postId }) => {
+  const [desc, setDesc] = useState("");
+  const { currentUser } = useContext(AuthContext);
 
-  const rootComment = seedComments.filter(
-    (seedComments) =>
-      seedComments.PostUUID === 5 && seedComments.postCommentID === 1
-    /* &&
-      seedComments.PostUUID === postData.PostUUID */
+  const { isLoading, error, data } = useQuery(["comments"], () =>
+    makeRequest.get("/comments?postId=" + postId).then((res) => {
+      return res.data;
+    })
   );
-  /* console.log("seedComments", seedComments); */
-  console.log("rootComment", rootComment);
-  /*console.log("postData", postData); */
 
-  const getReplies = (commentId) => {
-    return seedComments
-      .filter((seedComments) => seedComments.postCommentID === commentId)
-      .sort(
-        (a, b) =>
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-      );
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(
+    (newComment) => {
+      return makeRequest.post("/comments", newComment);
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries(["comments"]);
+      },
+    }
+  );
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    mutation.mutate({ desc, postId });
+    setDesc("");
   };
-
-  const addComment = (comment, postCommentID) => {
-    console.log("addComment", comment, postCommentID);
-    createComment(comment, postCommentID).then((text) => {
-      setSeedComments([text, ...seedComments]);
-      setActiveCommment(null);
-    });
-  };
-
-  useEffect(() => {
-    postCommentData().then((data) => {
-      setSeedComments(data);
-    });
-  }, []);
 
   return (
     <div className="comments">
-      <div className="comments-container">
-        {rootComment.map((rootComment) => (
-          <Comment
-            key={rootComment.id}
-            comment={rootComment}
-            replies={getReplies(rootComment.id)}
-            currentUserId={currentUserId}
-            activeComment={activeComment}
-            setActiveCommment={activeComment}
-            addComment={addComment}
-          />
-        ))}
+      <div className="write">
+        <img src={"/upload/" + currentUser.profilePic} alt="" />
+        <input
+          type="text"
+          placeholder="write a comment"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        />
+        <button onClick={handleClick}>Send</button>
       </div>
-      <CommentInput submitLabel="Write" handleSubmit="addComment" />
+      {error
+        ? "Something went wrong"
+        : isLoading
+        ? "loading"
+        : data.map((comment) => (
+            <div className="comment">
+              <img src={"/upload/" + comment.profilePic} alt="" />
+              <div className="info">
+                <span>{comment.name}</span>
+                <p>{comment.desc}</p>
+              </div>
+              <span className="date">
+                {moment(comment.createdAt).fromNow()}
+              </span>
+            </div>
+          ))}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { postCommentData } from "../CommentsSeedData";
-import { userData } from "../userData";
+import { postCommentData } from "../../CommentsSeedData";
+import { userData } from "../../userData";
 
 const CommentsOld = (postCommentData) => {
   const [comments, setComments] = useState(postCommentData);

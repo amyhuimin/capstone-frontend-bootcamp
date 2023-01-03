@@ -15,11 +15,11 @@ const PostingForm = (props) => {
       <div className="postFormTopInput">
         <div>
           <PostRequestList
-            /*             inputText={props.inputText}
-            handleTextChange={props.handleTextChange} */
             inputRequest={props.inputRequest}
             handleRequestChange={props.handleRequestChange}
-            /*             inputIdea={props.inputIdea}
+            /* inputText={props.inputText}
+            handleTextChange={props.handleTextChange}
+            inputIdea={props.inputIdea}
             handleIdeaChange={props.handleIdeaChange}
             inputUpload={props.inputUpload}
             handleUploadChange={props.handleUploadChange}
@@ -29,13 +29,13 @@ const PostingForm = (props) => {
         </div>
         <div>
           <PostIdeaList
+            inputIdea={props.inputIdea}
+            handleIdeaChange={props.handleIdeaChange}
             /*  inputText={props.inputText}
             handleTextChange={props.handleTextChange}
             inputRequest={props.inputRequest}
-            handleRequestChange={props.handleRequestChange} */
-            inputIdea={props.inputIdea}
-            handleIdeaChange={props.handleIdeaChange}
-            /* inputUpload={props.inputUpload}
+            handleRequestChange={props.handleRequestChange}
+            inputUpload={props.inputUpload}
             handleUploadChange={props.handleUploadChange}
             inputTag1={props.inputTag1}
             handleTag1Change={props.handleTag1Change} */
@@ -58,6 +58,8 @@ const PostingForm = (props) => {
       </div>
       <div>
         <PostTag1
+          inputTag1={props.inputTag1}
+          handleTag1Change={props.handleTag1Change}
           /* inputText={props.inputText}
           handleTextChange={props.handleTextChange}
           inputRequest={props.inputRequest}
@@ -66,8 +68,6 @@ const PostingForm = (props) => {
           handleIdeaChange={props.handleIdeaChange}
           inputUpload={props.inputUpload}
           handleUploadChange={props.handleUploadChange} */
-          inputTag1={props.inputTag1}
-          handleTag1Change={props.handleTag1Change}
         />
         <PostTag2
           inputTag2={props.inputTag2}
@@ -80,14 +80,14 @@ const PostingForm = (props) => {
       </div>
       <div>
         <PostUploadPhotoVideo
+          inputUpload={props.inputUpload}
+          handleUploadChange={props.handleUploadChange}
           /*    inputText={props.inputText}
           handleTextChange={props.handleTextChange}
           inputRequest={props.inputRequest}
           handleRequestChange={props.handleRequestChange}
           inputIdea={props.inputIdea}
           handleIdeaChange={props.handleIdeaChange} */
-          inputUpload={props.inputUpload}
-          handleUploadChange={props.handleUploadChange}
           /* inputTag1={props.inputTag1}
           handleTag1Change={props.handleTag1Change} */
         />

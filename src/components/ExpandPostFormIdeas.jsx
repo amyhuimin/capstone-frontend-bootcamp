@@ -84,7 +84,7 @@ const ExpandPostFormIdea = (props) => {
         <KeyboardArrowDownIcon />
       </ColorButton>
       <BootstrapDialog
-        fullWidth="true"
+        fullWidth={true}
         maxWidth="sm"
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

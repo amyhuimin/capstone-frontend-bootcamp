@@ -1,25 +1,25 @@
 import React from "react";
-import { userData } from "../userData";
+import { userData } from "../../userData";
 import Avatar from "@mui/material/Avatar";
 import CommentInput from "./CommentInput";
 
 const Comment = ({
   comment,
-  replies,
+  /* replies, */
   currentUserId,
-  activeComment,
-  setActiveComment,
+  /* activeComment,
+  setActiveComment, */
   postCommentID = 1,
-  addComment,
+  /* addComment, */
 }) => {
   const canReply = Boolean(currentUserId);
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
-  const isReplying =
+  /*  const isReplying =
     activeComment &&
     activeComment.type === "replying" &&
     activeComment.id === comment.postCommentID;
 
-  const replyId = postCommentID ? postCommentID : comment.id;
+  const replyId = postCommentID ? postCommentID : comment.id; */
 
   return (
     <div key={comment.id} className="comment">
@@ -28,14 +28,14 @@ const Comment = ({
           src={comment.userId == userData.userId ? "error" : userData.imgURL}
         />
       </div>
-      <div classname="comment-right-part">
+      <div className="comment-right-part">
         <div className="comment-contect">
           <div className="comment-author">{comment.user}</div>
           <div>{createdAt}</div>
         </div>
         <div className="comment-text">{comment.comment}</div>
         <div className="comment-actions">
-          {canReply && (
+          {/*  {canReply && (
             <div
               className="comment-action"
               onClick={() =>
@@ -57,7 +57,7 @@ const Comment = ({
         )}
 
         {replies.length > 0 && (
-          <div classname="replies">
+          <div className="replies">
             {replies.map((reply) => (
               <Comment
                 comment={reply}
@@ -71,7 +71,8 @@ const Comment = ({
               />
             ))}
           </div>
-        )}
+        )} */}
+        </div>
       </div>
     </div>
   );

@@ -12,10 +12,6 @@ import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
-import CommentSec from "./CommentSec";
-import CommentInput from "./CommentInput";
-/* import Comments from "./Comments2";
-import CommmentsSection from "./Comments"; */
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -129,10 +125,8 @@ const PostCardTextOnly = (content) => {
             View Comments
           </ExpandMore>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>Text text</CardContent>
+            comments
           </Collapse>
-          <CommentSec />
-          <CommentInput />
         </Card>
       </div>
     </div>

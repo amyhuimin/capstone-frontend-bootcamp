@@ -15,7 +15,6 @@ import PostCardWithVideoImage from "./PostCardWithVideoImage";
 import PostCardIdeas from "./PostCardIdeas";
 import CreatePostCard from "./CreatePostCard";
 import "./cssFiles/newsfeed.css";
-import CommentSec from "./CommentSec.jsx";
 
 function NewsFeed() {
   //React Query hook

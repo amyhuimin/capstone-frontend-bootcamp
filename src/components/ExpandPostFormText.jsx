@@ -84,7 +84,7 @@ const ExpandPostFormText = (props) => {
       </ColorButton>
 
       <BootstrapDialog
-        fullWidth="true"
+        fullWidth={true}
         maxWidth="sm"
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

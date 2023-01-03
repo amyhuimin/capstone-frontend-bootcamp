@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ReadMore from "./ReadMore";
 import FollowButton from "./FollowButton";
-import Comments from "./CommentsOld";
 
 const PostCardIdeas = (content) => {
   return (

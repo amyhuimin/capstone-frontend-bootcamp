@@ -1,6 +1,4 @@
-import { Link } from "@mui/material";
 import React, { useState } from "react";
-//import { postData } from "../PostSeedData";
 
 const ReadMore = ({ content, link }) => {
   const [readMore, setReadMore] = useState(false);
@@ -12,34 +10,32 @@ const ReadMore = ({ content, link }) => {
   };
 
   return (
-    <div>
-      <p className="readMoreText">
-        {link == undefined || link === null ? (
-          readMore ? (
-            text
-          ) : (
-            text.slice(0, 100)
-          )
+    <span className="readMoreText">
+      {link == undefined || link === null ? (
+        readMore ? (
+          text
         ) : (
-          <a
-            style={{ color: "inherit" }}
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {readMore ? text : text.slice(0, 100)}
-          </a>
-        )}
-        {text.length < 101 ? null : (
-          <span
-            onClick={toggleReadMore}
-            style={{ color: "orange", textDecoration: "underline" }}
-          >
-            {expansion}
-          </span>
-        )}
-      </p>
-    </div>
+          text.slice(0, 100)
+        )
+      ) : (
+        <a
+          style={{ color: "inherit" }}
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {readMore ? text : text.slice(0, 100)}
+        </a>
+      )}
+      {text.length < 101 ? null : (
+        <span
+          onClick={toggleReadMore}
+          style={{ color: "orange", textDecoration: "underline" }}
+        >
+          {expansion}
+        </span>
+      )}
+    </span>
   );
 };
 

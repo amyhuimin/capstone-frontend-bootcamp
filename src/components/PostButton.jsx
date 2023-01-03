@@ -31,7 +31,6 @@ const PostButton = (props) => {
     tag3: props.inputTag3,
   });
 
-  /*   const oneLinerText = () => { */
   useEffect(() => {
     console.log(props.inputIdea);
     for (var i = 0; i < ideaData.length; i++) {
