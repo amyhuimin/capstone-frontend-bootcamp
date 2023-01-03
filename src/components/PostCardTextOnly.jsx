@@ -117,7 +117,7 @@ const PostCardTextOnly = (content) => {
             </Typography>
           </CardActions>
           <Comments />
-          {/*  <ExpandMore
+          <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
@@ -127,7 +127,7 @@ const PostCardTextOnly = (content) => {
           </ExpandMore>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             comments
-          </Collapse> */}
+          </Collapse>
         </Card>
       </div>
     </div>
