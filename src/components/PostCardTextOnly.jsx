@@ -12,6 +12,7 @@ import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
+import Comments from "./Comments";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -116,7 +117,8 @@ const PostCardTextOnly = (content) => {
               {content.content.NumberFollowers} Following
             </Typography>
           </CardActions>
-          <ExpandMore
+          <Comments />
+          {/*  <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
@@ -126,7 +128,7 @@ const PostCardTextOnly = (content) => {
           </ExpandMore>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             comments
-          </Collapse>
+          </Collapse> */}
         </Card>
       </div>
     </div>
