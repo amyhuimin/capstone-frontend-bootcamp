@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { getCurrentUser } from "../Queries";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Card } from "@mui/material";
 
 export default function IdeasPage() {
   const [UserId, setUserId] = useState("");
@@ -46,7 +47,9 @@ export default function IdeasPage() {
   return (
     <div className="landingPage">
       <div className="postFeed">
-        <NewIdeaForm />
+        <Card className="cards" style={{ padding: "3% 0 2% 5%" }}>
+          <NewIdeaForm />
+        </Card>
         <IdeasFeed UserId={UserId} />
       </div>
       <div className="newsFeed">

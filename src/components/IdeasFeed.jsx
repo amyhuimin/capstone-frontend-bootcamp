@@ -10,27 +10,20 @@ import "./cssFiles/rightNewsBar.css";
 import "../App.css";
 import Box from "@mui/material/Box";
 // import { postData } from "../PostSeedData";
-import PostCardTextOnly from "./PostCardTextOnly.jsx";
-import PostCardWithImg from "./PostCardWithImg";
-import PostCardWithVideo from "./PostCardWithVideo";
-import PostCardWithVideoImage from "./PostCardWithVideoImage";
-import PostCardIdeas from "./PostCardIdeas";
-// import CreatePostCard from "./CreatePostCard";
 
 import "./cssFiles/newsfeed.css";
-import FollowedItems from "./FollowedItems.jsx";
 import IdeaCard from "./IdeaCard.jsx";
 
 function IdeasFeed(props) {
   //React Query hook
-  const [followedItems, setFollowedItems] = useState(null);
+  const [myIdeas, setMyIdeas] = useState(null);
   const { isLoading, data, isError } = useQuery(
     ["followedIdea", props], //[key(Ownself name it), props]
     (props) => getUserIdeas(props) //function you want to use from Queries.js
   );
   useEffect(() => {
     if (data !== null && data !== undefined) {
-      setFollowedItems(Object.values(data));
+      setMyIdeas(Object.values(data));
     }
   }, [data]);
   if (isLoading) {
@@ -39,20 +32,24 @@ function IdeasFeed(props) {
     return <div>Error Loading</div>;
   }
 
-  if (followedItems !== null) {
-    console.log(followedItems);
+  if (myIdeas !== null) {
+    console.log(myIdeas);
     return (
       <div>
-        <h1 style={{ marginLeft: 10 }}>My Ideas</h1>
-        {followedItems.map((item) => {
-          console.log(item.id);
+        {/* <h1 style={{ marginLeft: 10 }}>My Ideas</h1> */}
+        {myIdeas.map((item) => {
+          console.log("items" + item);
           return (
-              <FollowedItems
-                key={item.id}
-                name={item.UserId}
-                img={item.IdeaProfileImgURL}
-                extra={item.IdeaName}
-              />
+            <IdeaCard
+              key={item.id}
+              name={item.UserId}
+              img={item.IdeaProfileImgURL}
+              ideaName={item.IdeaName}
+              oneLiner={item.OneLiner}
+              generatedDate={item.createdAt}
+              // comments={item.Comments}
+              //status={item.status}
+            />
           );
         })}
       </div>
