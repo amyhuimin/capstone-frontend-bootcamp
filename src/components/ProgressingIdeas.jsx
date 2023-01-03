@@ -26,12 +26,12 @@ function ProgressingIdeas(props) {
   }
 
   if (followedItems !== null) {
-    console.log(followedItems);
+    // console.log(followedItems);
     return (
       <div>
         <h1 style={{ marginLeft: 10 }}>My Ideas</h1>
         {followedItems.map((item) => {
-          console.log(item.id);
+          // console.log(item.id);
           return (
             <FollowedItems
               key={item.id}

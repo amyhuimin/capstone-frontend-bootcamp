@@ -19,6 +19,7 @@ import PostCardIdeas from "./PostCardIdeas";
 
 import "./cssFiles/newsfeed.css";
 import FollowedItems from "./FollowedItems.jsx";
+import IdeaCard from "./IdeaCard.jsx";
 
 function IdeasFeed(props) {
   //React Query hook
