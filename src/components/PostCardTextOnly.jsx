@@ -27,11 +27,11 @@ const ExpandMore = styled((props) => {
 }));
 
 const PostCardTextOnly = (content) => {
-  const [expanded, setExpanded] = useState(false);
+  /*  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
+  }; */
 
   return (
     <div className="postCard">
@@ -117,17 +117,6 @@ const PostCardTextOnly = (content) => {
             </Typography>
           </CardActions>
           <Comments />
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            View Comments
-          </ExpandMore>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            comments
-          </Collapse>
         </Card>
       </div>
     </div>

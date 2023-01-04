@@ -11,11 +11,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import RightNewsBar from "./RightNewsBar";
 import "./cssFiles/PerIdeaPage.css";
-import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
+/* import SwipeableViews from "react-swipeable-views"; */
+
 import { useTheme } from "@mui/material/styles";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 // import Card from "react-bootstrap/Card";
 // import Button from "react-bootstrap/Button";
 // import Box from "@mui/material/Box";
@@ -28,7 +27,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 const BACKEND_URL = "http://localhost:4000";
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+/* const AutoPlaySwipeableViews = autoPlay(SwipeableViews); */
 
 const images = [
   {
@@ -163,64 +162,49 @@ const PerIdeaPage = () => {
           >
             <Typography>{images[activeStep].label}</Typography>
           </Paper>
-          <AutoPlaySwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={activeStep}
-            onChangeIndex={handleStepChange}
-            enableMouseEvents
-          >
-            {images.map((step, index) => (
-              <div key={step.label}>
-                {Math.abs(activeStep - index) <= 2 ? (
-                  <Box
-                    component="img"
-                    sx={{
-                      height: 255,
-                      display: "block",
-                      maxWidth: 400,
-                      overflow: "hidden",
-                      width: "100%",
-                    }}
-                    src={step.imgPath}
-                    alt={step.label}
-                  />
-                ) : null}
-              </div>
-            ))}
-          </AutoPlaySwipeableViews>
-          <MobileStepper
-            steps={maxSteps}
-            position="static"
-            activeStep={activeStep}
-            nextButton={
-              <Button
-                size="small"
-                onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
-              >
-                Next
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowLeft />
-                ) : (
-                  <KeyboardArrowRight />
-                )}
-              </Button>
-            }
-            backButton={
-              <Button
-                size="small"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-              >
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowRight />
-                ) : (
-                  <KeyboardArrowLeft />
-                )}
-                Back
-              </Button>
-            }
-          />
+        </Box>
+        <Box>
+          <CCarousel controls indicators>
+            <CCarouselItem>
+              <CImage
+                className="d-block w-100"
+                src="/images/react.jpg"
+                alt="slide 1"
+              />
+            </CCarouselItem>
+            <CCarouselItem>
+              <CImage
+                className="d-block w-100"
+                src="/images/vue.jpg"
+                alt="slide 2"
+              />
+            </CCarouselItem>
+            <CCarouselItem>
+              <CImage
+                className="d-block w-100"
+                src="/images/angular.jpg"
+                alt="slide 3"
+              />
+            </CCarouselItem>
+          </CCarousel>
+          {images.map((step, index) => (
+            <div key={step.label}>
+              {Math.abs(activeStep - index) <= 2 ? (
+                <Box
+                  component="img"
+                  sx={{
+                    height: 255,
+                    display: "block",
+                    maxWidth: 400,
+                    overflow: "hidden",
+                    width: "100%",
+                  }}
+                  src={step.imgPath}
+                  alt={step.label}
+                />
+              ) : null}
+            </div>
+          ))}
         </Box>
 
         <Box

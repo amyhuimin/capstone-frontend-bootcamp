@@ -19,6 +19,7 @@ export default function PostRequestList(props) {
           value={props.inputRequest}
           onChange={handleChange}
           displayEmpty
+          required
           inputProps={{ "aria-label": "Without label" }}
         >
           <MenuItem value="">

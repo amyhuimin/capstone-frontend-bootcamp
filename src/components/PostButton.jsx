@@ -44,6 +44,8 @@ const PostButton = (props) => {
     retry: false,
   });
 
+  console.log(data);
+
   useEffect(() => {
     for (var i = 0; i < ideaData.length; i++) {
       if (props.inputIdea === ideaData[i].ideaName) {

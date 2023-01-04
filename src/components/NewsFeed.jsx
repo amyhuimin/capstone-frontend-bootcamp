@@ -26,14 +26,14 @@ function NewsFeed() {
   const { user } = useAuth0();
 
   if (!isLoading && !isError) {
-    const reversedData = data.data.reverse();
+    /* const reversedData = data.data.reverse(); */
     return (
       <div className="newsfeed">
         <Box bgcolor="transparent">
           <div className="newsfeedscroll">
             {user !== undefined ? <CreatePostCard /> : <></>}
-            {reversedData.map((post) => {
-              if (post.IdeaId != null) {
+            {data.data.map((post) => {
+              if (post.RequestType == null) {
                 return <PostCardIdeas key={post.Id} content={post} />;
               } else if (post.VideoURL != null && post.ImgURL === null) {
                 return <PostCardWithVideo key={post.Id} content={post} />;
