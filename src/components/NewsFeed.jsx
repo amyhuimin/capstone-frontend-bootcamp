@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import "./cssFiles/rightNewsBar.css";
 import "../App.css";
 import Box from "@mui/material/Box";
-import { postData } from "../PostSeedData";
 import PostCardTextOnly from "./PostCardTextOnly.jsx";
 import PostCardWithImg from "./PostCardWithImg";
 import PostCardWithVideo from "./PostCardWithVideo";

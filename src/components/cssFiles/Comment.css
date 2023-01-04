@@ -1,0 +1,20 @@
+.commentInput {
+  width: 93%;
+  border-radius: 17px;
+  line-height: 35px;
+  border-width: 0;
+  background-color: rgb(237, 237, 237);
+  margin-left: 2%;
+  margin-top: 1%;
+  padding-left: 3%;
+}
+
+.comments {
+  margin-top: 1%;
+}
+
+.commentPaper {
+  overflow-wrap: break-word;
+  padding: 4%;
+  margin: 0 0 5% 1.5%;
+}

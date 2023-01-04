@@ -1,38 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ReadMore from "./ReadMore";
 import FollowButton from "./FollowButton";
-import Collapse from "@mui/material/Collapse";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import IconButton from "@mui/material/IconButton";
-import { styled } from "@mui/material/styles";
 import Comments from "./Comments";
+import Divider from "@mui/material/Divider";
+import { styled } from "@mui/material/styles";
+import "./cssFiles/Posting.css";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <Button {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "View Comments" : null,
-  marginLeft: "auto",
-  fontSize: "small",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+const TagButton = styled(Button)({
+  textTransform: "none",
+  fontSize: 14,
+  color: "#FFCE35",
+  fontWeight: "bold",
+});
 
 const PostCardTextOnly = (content) => {
-  /*  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  }; */
-
   return (
     <div className="postCard">
       <div>
@@ -41,7 +28,7 @@ const PostCardTextOnly = (content) => {
             action={<FollowButton />}
             avatar={<Avatar src={content.content.ImgURL} />}
             title={content.content.User}
-            style={{ padding: "3% 0 2% 5%" }}
+            style={{ padding: "3% 5% 2% 5%" }}
           />
           <CardHeader
             className="postCardHeaders"
@@ -51,18 +38,29 @@ const PostCardTextOnly = (content) => {
           />
 
           <CardContent
-            style={{ padding: "0", paddingLeft: "5%", paddingRight: "5%" }}
+            style={{
+              padding: "0",
+              paddingLeft: "5%",
+              paddingRight: "5%",
+              paddingBottom: "3%",
+              paddingTop: "2%",
+            }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Request Type: {content.content.RequestType}
+            <Typography
+              variant="body2"
+              color="text.primary"
+              style={{ paddingBottom: "2%" }}
+            >
+              <b>Request:</b> {content.content.RequestType}
             </Typography>
             <Typography
               variant="body2"
-              color="text.secondary"
+              color="text.primary"
               sx={{
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 display: "-webkit-box",
+                fontSize: "15px",
               }}
             >
               {content.content.Text != undefined ? (
@@ -104,18 +102,34 @@ const PostCardTextOnly = (content) => {
             />
           </div>
         ) : null} */}
-          <CardActions disableSpacing>
-            <Button variant="soft">{content.content.Tag1}</Button>
-            <Button variant="soft">{content.content.Tag2}</Button>
-            <Button variant="soft">{content.content.Tag3}</Button>
-
-            <Typography
-              level="body3"
-              sx={{ fontWeight: "md", color: "text.secondary" }}
-            >
-              {content.content.NumberFollowers} Following
-            </Typography>
-          </CardActions>
+          <Divider variant="middle" />
+          <div className="tagsSection">
+            <div className="tagging">
+              {content.content.Tag1 != null ? (
+                <TagButton variant="soft">{content.content.Tag1}</TagButton>
+              ) : null}
+              {content.content.Tag2 != null ? (
+                <TagButton variant="soft">{content.content.Tag2}</TagButton>
+              ) : null}
+              {content.content.Tag3 != null ? (
+                <TagButton variant="soft">{content.content.Tag3}</TagButton>
+              ) : null}
+            </div>
+            <div className="followingTag">
+              <Typography
+                level="body3"
+                sx={{
+                  fontWeight: "md",
+                  color: "text.secondary",
+                  padding: "7px",
+                  fontSize: "14px",
+                }}
+              >
+                {content.content.NumberFollowers} Following
+              </Typography>
+            </div>
+          </div>
+          <Divider variant="middle" />
           <Comments />
         </Card>
       </div>

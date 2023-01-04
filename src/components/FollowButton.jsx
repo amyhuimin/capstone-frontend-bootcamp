@@ -28,7 +28,7 @@ const FollowButton = () => {
     <Button
       variant="outlined"
       size="small"
-      sx={{ width: 5, textTransform: "none", padding: 0 }}
+      sx={{ width: 5, textTransform: "none", padding: 0, marginTop: 1.5 }}
       onClick={handleFollowPostChange}
     >
       {followPost ? "Follow" : "Following"}

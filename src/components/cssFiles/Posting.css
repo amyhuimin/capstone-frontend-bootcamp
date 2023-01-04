@@ -5,3 +5,16 @@
 .postFormTopInput {
   display: flex;
 }
+
+.tagsSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tagging {
+  margin-left: 2.5%;
+}
+
+.followingTag {
+  margin-right: 4.5%;
+}
