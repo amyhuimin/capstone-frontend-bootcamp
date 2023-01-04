@@ -35,6 +35,15 @@ export default function NewIdeaForm() {
   const [Tag3, setTag3] = React.useState(null);
   const [Status, setStatus] = React.useState("Private");
   const [ImgUrl, setImgURL] = React.useState("");
+  const [fullWidth, setFullWidth] = React.useState(true);
+  const [maxWidth, setMaxWidth] = React.useState("xs");
+  const styles = {
+    dialogPaper: {
+      minHeight: "80vh",
+      maxHeight: "80vh",
+    },
+  };
+
   const { mutate } = useMutation((data) => PostAnIdea(data), {
     mutationKey: "PostUploadIdea",
   });
@@ -49,7 +58,7 @@ export default function NewIdeaForm() {
     {
       label: "What is the Idea? (details)",
       description: (
-        <DialogContent>
+        <DialogContent minHeight={"400px"}>
           <TextField
             autoFocus
             id="outlined-basic"
@@ -109,7 +118,7 @@ export default function NewIdeaForm() {
     {
       label: "What's the uniqueness?",
       description: (
-        <DialogContent>
+        <DialogContent minHeight={"400px"}>
           <TextField
             autoFocus
             id="outlined-basic"
@@ -193,7 +202,7 @@ export default function NewIdeaForm() {
       label: "Saving the idea",
       description: (
         <div>
-          <DialogContent>
+          <DialogContent minHeight={"400px"}>
             <TextField
               autoFocus
               id="outlined-basic"
@@ -344,14 +353,32 @@ export default function NewIdeaForm() {
     <>
       <Button
         onClick={handleClickOpen}
-        sx={{ backgroundColor: "#FFCE35", color: "black", borderRadius: '20px'}}
+        sx={{
+          backgroundColor: "#FFCE35",
+          color: "black",
+          borderRadius: "20px",
+        }}
         variant="outlined"
       >
         Save a new idea
       </Button>
 
       {activeStep === steps.length ? (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog
+          fullWidth={fullWidth}
+          maxWidth={maxWidth}
+          PaperProps={{
+            sx: {
+              // width: "80%",
+              minHeight: 450,
+            },
+            style: {
+              backgroundColor: "#FFCE35",
+            },
+          }}
+          open={open}
+          onClose={handleClose}
+        >
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>Uploaded.</Typography>
 
@@ -362,7 +389,21 @@ export default function NewIdeaForm() {
           </React.Fragment>
         </Dialog>
       ) : (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog
+          fullWidth={fullWidth}
+          maxWidth={maxWidth}
+          PaperProps={{
+            sx: {
+              // width: "80%",
+              minHeight: 450,
+            },
+            style: {
+              backgroundColor: "#FFCE35",
+            },
+          }}
+          open={open}
+          onClose={handleClose}
+        >
           <Typography>{steps[activeStep].label}</Typography>
 
           {steps[activeStep].description}
@@ -370,8 +411,9 @@ export default function NewIdeaForm() {
             variant="dots"
             steps={4}
             position="static"
-            sx={{ flexGrow: 1 }}
+            sx={{ flexGrow: 1 }, {height: "20px"}}
             activeStep={activeStep}
+            style= {{backgroundColor: "#FFCE35"}}
           />
 
           <React.Fragment>
@@ -397,3 +439,4 @@ export default function NewIdeaForm() {
     </>
   );
 }
+

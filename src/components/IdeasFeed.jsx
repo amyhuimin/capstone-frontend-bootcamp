@@ -41,16 +41,19 @@ function IdeasFeed(props) {
         {myIdeas.map((item) => {
           console.log("items" + item);
           return (
-              <IdeaCard
-                key={item.id}
-                name={item.UserId}
-                img={item.IdeaProfileImgURL}
-                ideaName={item.IdeaName}
-                oneLiner={item.OneLiner}
-                generatedDate={item.createdAt}
-                // comments={item.Comments}
-                status={item.Status}
-              />
+            <IdeaCard
+              key={item.id}
+              name={item.UserId}
+              img={item.IdeaProfileImgURL}
+              ideaName={item.IdeaName}
+              oneLiner={item.OneLiner}
+              generatedDate={new Date(item.createdAt).toLocaleDateString(
+                "en-US",
+                { day: "numeric", month: "short", year: "numeric" }
+              )}
+              // comments={item.Comments}
+              status={item.Status}
+            />
           );
         })}
       </div>
