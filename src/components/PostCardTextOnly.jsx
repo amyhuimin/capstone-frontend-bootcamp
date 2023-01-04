@@ -27,7 +27,6 @@ const ExpandMore = styled((props) => {
 }));
 
 const PostCardTextOnly = (content) => {
-  console.log(content.content);
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {

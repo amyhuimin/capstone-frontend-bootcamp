@@ -14,7 +14,11 @@ async function PostsQuery() {
 }
 
 //Posts upload
-async function PostAPost() {}
+async function PostAPost(props) {
+  console.log(props.newPost);
+  const { data } = await axios.post(`${BackEndUrl}/post`, props.newPost);
+  return;
+}
 
 //LeftNavBar get all
 async function LeftNavQuery() {

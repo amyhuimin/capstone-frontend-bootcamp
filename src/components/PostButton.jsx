@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { PostAPost, getCurrentUser } from "../Queries";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { styled } from "@mui/material/styles";
@@ -17,53 +20,63 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const PostButton = (props) => {
-  const [data, setData] = useState({
-    date: new Date(),
-    user: "Jordan",
-    ideaName: props.inputIdea,
-    oneliner: null,
-    text: props.inputText,
-    imgURL: props.inputUpload.imageURL,
-    videoURL: props.inputUpload.videoURL,
-    requestType: props.inputRequest,
-    tag1: props.inputTag1,
-    tag2: props.inputTag2,
-    tag3: props.inputTag3,
+  const { user, getAccessTokenSilently } = useAuth0();
+  const { data } = useQuery(["currentUser"], () =>
+    getCurrentUser({
+      data: user.email,
+      accessToken: async () => await getUserInfo(),
+    })
+  );
+  const [newPost, setnewPost] = useState({
+    Date: new Date(),
+    User: data.UserName,
+    IdeaName: props.inputIdea,
+    OneLiner: null,
+    Text: props.inputText,
+    ImgURL: props.inputUpload,
+    VideoURL: null,
+    RequestType: props.inputRequest,
+    Tag1: props.inputTag1,
+    Tag2: props.inputTag2,
+    Tag3: props.inputTag3,
+  });
+  const { mutate } = useMutation((props) => PostAPost(props), {
+    retry: false,
   });
 
   useEffect(() => {
-    console.log(props.inputIdea);
     for (var i = 0; i < ideaData.length; i++) {
-      console.log(ideaData[i].ideaName);
       if (props.inputIdea === ideaData[i].ideaName) {
-        const newData = data;
-        newData.oneliner = ideaData[i].oneLiner;
-        setData(newData);
-        console.log(newData);
+        const newData = {
+          Date: new Date(),
+          User: data.UserName,
+          IdeaName: props.inputIdea,
+          OneLiner: ideaData[i].oneLiner,
+          Text: props.inputText,
+          ImgURL: props.inputUpload,
+          VideoURL: null,
+          RequestType: props.inputRequest,
+          Tag1: props.inputTag1,
+          Tag2: props.inputTag2,
+          Tag3: props.inputTag3,
+        };
+        setnewPost(newData);
       }
     }
-  }, [props.inputIdea]);
-
-  /*  }; */
-
-  const handleChange = (event) => {
-    props.handleCloseChange(event.target.event);
-  };
+  }, [props]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data);
-    setData({
-      ideaName: null,
-      oneliner: null,
-      text: null,
-      imgURL: null,
-      videoURL: null,
-      requestType: null,
-      tag1: null,
-      tag2: null,
-      tag3: null,
+    mutate({ newPost: newPost });
+    props.handleCloseChange(event.target.event);
+  };
+
+  const getUserInfo = async () => {
+    const accessToken = await getAccessTokenSilently({
+      audience: `https://Proj3/api`,
+      scope: "read:current_user",
     });
+    return accessToken;
   };
 
   return (
@@ -73,7 +86,6 @@ const PostButton = (props) => {
           variant="contained"
           endIcon={<SendIcon />}
           autoFocus
-          onClick={handleChange}
           type="submit"
         >
           Post!

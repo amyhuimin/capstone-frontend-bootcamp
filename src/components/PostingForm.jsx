@@ -8,6 +8,7 @@ import ReactPlayer from "react-player/lazy";
 import PostTag1 from "./PostTag1";
 import PostTag2 from "./PostTag2";
 import PostTag3 from "./PostTag3";
+import { height } from "@mui/system";
 
 const PostingForm = (props) => {
   return (
@@ -81,7 +82,7 @@ const PostingForm = (props) => {
       <div>
         <PostUploadPhotoVideo
           inputUpload={props.inputUpload}
-          handleUploadChange={props.handleUploadChange}
+          ImageSetter={props.handleUploadChange}
           /*    inputText={props.inputText}
           handleTextChange={props.handleTextChange}
           inputRequest={props.inputRequest}
@@ -91,26 +92,8 @@ const PostingForm = (props) => {
           /* inputTag1={props.inputTag1}
           handleTag1Change={props.handleTag1Change} */
         />
-        {props.inputUpload.videoURL ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <ReactPlayer
-              url={props.inputUpload.videoURL}
-              style={{
-                paddingLeft: "5%",
-                paddingRight: "5%",
-              }}
-              config={{
-                youtube: {
-                  playerVars: { controls: 1 },
-                },
-              }}
-            />
-          </div>
+        {props.inputUpload !== "" ? (
+          <img style={{ height: 300 }} src={props.inputUpload} alt="null" />
         ) : null}
       </div>
     </div>

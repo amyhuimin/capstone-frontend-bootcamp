@@ -11,10 +11,7 @@ const CreatePostCard = () => {
   const [inputText, setInputText] = useState("");
   const [inputRequest, setInputRequest] = useState("");
   const [inputIdea, setInputIdea] = useState("");
-  const [inputUpload, setInputUpload] = useState({
-    imageURL: "",
-    videoURL: "",
-  });
+  const [inputUpload, setInputUpload] = useState("");
   const [inputTag1, setInputTag1] = useState("");
   const [inputTag2, setInputTag2] = useState("");
   const [inputTag3, setInputTag3] = useState("");

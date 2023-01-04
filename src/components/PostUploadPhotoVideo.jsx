@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import { green } from "@mui/material/colors";
 
@@ -13,11 +13,15 @@ export default function PostUploadPhotoVideo(props) {
     onSuccess: (data) => passURL(data),
     retry: 3,
   });
-  const handleChange = (event) => {
-    setFile(event.target.files);
+
+  useEffect(() => {
     if (file !== null && file !== undefined) {
       mutate(file);
     }
+  }, [file]);
+
+  const handleChange = (event) => {
+    setFile(event.target.files);
   };
 
   const passURL = (data) => {

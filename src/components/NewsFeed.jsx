@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useAuth0 } from "@auth0/auth0-react";
 //React Query imports
 import { PostsQuery } from "../Queries.js";
 import { useQuery } from "@tanstack/react-query";
@@ -23,15 +23,16 @@ function NewsFeed() {
     () => PostsQuery() //function you want to use from Queries.js
   );
 
-  if (!isLoading && !isError) {
-    console.log(data);
+  const { user } = useAuth0();
 
+  if (!isLoading && !isError) {
+    const reversedData = data.data.reverse();
     return (
       <div className="newsfeed">
         <Box bgcolor="transparent">
           <div className="newsfeedscroll">
-            <CreatePostCard />
-            {data.data.map((post) => {
+            {user !== undefined ? <CreatePostCard /> : <></>}
+            {reversedData.map((post) => {
               if (post.IdeaId != null) {
                 return <PostCardIdeas key={post.Id} content={post} />;
               } else if (post.VideoURL != null && post.ImgURL === null) {
