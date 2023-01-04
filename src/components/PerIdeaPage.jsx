@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Card,
   Paper,
   Box,
   MobileStepper,
