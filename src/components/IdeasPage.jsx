@@ -18,12 +18,14 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: "#fce4ec",
   },
+  display: "inline-block",
   marginRight: theme.spacing(2),
   marginLeft: 0,
-  width: "100%",
+  width: "100px",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
-    width: "auto",
+    width: "50%",
+    borderRadius: "20px",
   },
 }));
 

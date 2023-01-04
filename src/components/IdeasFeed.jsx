@@ -49,7 +49,7 @@ function IdeasFeed(props) {
                 oneLiner={item.OneLiner}
                 generatedDate={item.createdAt}
                 // comments={item.Comments}
-                //status={item.status}
+                status={item.Status}
               />
           );
         })}

@@ -341,10 +341,10 @@ export default function NewIdeaForm() {
   };
 
   return (
-    <div>
+    <>
       <Button
         onClick={handleClickOpen}
-        sx={{ backgroundColor: "#FFCE35", color: "black" }}
+        sx={{ backgroundColor: "#FFCE35", color: "black", borderRadius: '20px'}}
         variant="outlined"
       >
         Save a new idea
@@ -394,6 +394,6 @@ export default function NewIdeaForm() {
           </React.Fragment>
         </Dialog>
       )}
-    </div>
+    </>
   );
 }
