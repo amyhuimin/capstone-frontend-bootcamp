@@ -27,14 +27,16 @@ export default function PostIdeaList(props) {
           value={props.inputIdea}
           onChange={handleChange}
           displayEmpty
+          defaultValue=""
           inputProps={{ "aria-label": "Without label" }}
+          sx={{ width: "300px" }}
         >
           <MenuItem value="">
             <em>Which idea are you posting for</em>
           </MenuItem>
           {newArray.map((item) => {
             return (
-              <MenuItem key={item.ideaId} value={item.ideaName}>
+              <MenuItem key={item.Id} value={item.ideaName}>
                 {item.ideaName}
               </MenuItem>
             );

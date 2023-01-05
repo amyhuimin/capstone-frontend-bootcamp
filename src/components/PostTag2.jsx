@@ -13,7 +13,7 @@ export default function PostTag2(props) {
     <div>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         <div>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <FormControl sx={{ m: 1, width: "10vw" }} variant="outlined">
             <OutlinedInput
               id="outlined-adornment-weight"
               placeholder="Tag"
@@ -24,9 +24,6 @@ export default function PostTag2(props) {
               value={props.inputTag2}
               onChange={handleChange}
             />
-            <FormHelperText id="outlined-weight-helper-text">
-              Tag
-            </FormHelperText>
           </FormControl>
         </div>
       </Box>

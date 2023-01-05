@@ -27,9 +27,14 @@ const PostButton = (props) => {
       accessToken: async () => await getUserInfo(),
     })
   );
+
+  console.log(data);
+
   const [newPost, setnewPost] = useState({
     Date: new Date(),
+    /* UserId: "", */
     User: data.UserName,
+    /* IdeaId: "", */
     IdeaName: props.inputIdea,
     OneLiner: null,
     Text: props.inputText,
@@ -44,14 +49,16 @@ const PostButton = (props) => {
     retry: false,
   });
 
-  console.log(data);
+  console.log("postButton", data);
 
   useEffect(() => {
     for (var i = 0; i < ideaData.length; i++) {
       if (props.inputIdea === ideaData[i].ideaName) {
         const newData = {
           Date: new Date(),
+          /* UserId: "", */
           User: data.UserName,
+          /* IdeaId: "", */
           IdeaName: props.inputIdea,
           OneLiner: ideaData[i].oneLiner,
           Text: props.inputText,

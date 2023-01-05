@@ -21,14 +21,17 @@ export default function PostRequestList(props) {
           displayEmpty
           required
           inputProps={{ "aria-label": "Without label" }}
+          sx={{ width: "13vw" }}
         >
           <MenuItem value="">
             <em>Request</em>
           </MenuItem>
-          <MenuItem value="Comments">Asking for comments</MenuItem>
-          <MenuItem value="Help">Help needed</MenuItem>
-          <MenuItem value="Opinions">What do you think?</MenuItem>
-          <MenuItem value="Best Practice">What can be done better?</MenuItem>
+          <MenuItem value="Asking for Comments">Asking for comments</MenuItem>
+          <MenuItem value="Help needed">Help needed</MenuItem>
+          <MenuItem value="What do you think?">What do you think?</MenuItem>
+          <MenuItem value="What can be done better?">
+            What can be done better?
+          </MenuItem>
         </Select>
       </FormControl>
     </div>

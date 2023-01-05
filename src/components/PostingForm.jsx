@@ -58,6 +58,23 @@ const PostingForm = (props) => {
         />
       </div>
       <div>
+        <PostUploadPhotoVideo
+          inputUpload={props.inputUpload}
+          ImageSetter={props.handleUploadChange}
+          /*    inputText={props.inputText}
+          handleTextChange={props.handleTextChange}
+          inputRequest={props.inputRequest}
+          handleRequestChange={props.handleRequestChange}
+          inputIdea={props.inputIdea}
+          handleIdeaChange={props.handleIdeaChange} */
+          /* inputTag1={props.inputTag1}
+          handleTag1Change={props.handleTag1Change} */
+        />
+        {props.inputUpload !== "" ? (
+          <img style={{ height: 300 }} src={props.inputUpload} alt="null" />
+        ) : null}
+      </div>
+      <div className="tagsSection">
         <PostTag1
           inputTag1={props.inputTag1}
           handleTag1Change={props.handleTag1Change}
@@ -78,23 +95,6 @@ const PostingForm = (props) => {
           inputTag3={props.inputTag3}
           handleTag3Change={props.handleTag3Change}
         />
-      </div>
-      <div>
-        <PostUploadPhotoVideo
-          inputUpload={props.inputUpload}
-          ImageSetter={props.handleUploadChange}
-          /*    inputText={props.inputText}
-          handleTextChange={props.handleTextChange}
-          inputRequest={props.inputRequest}
-          handleRequestChange={props.handleRequestChange}
-          inputIdea={props.inputIdea}
-          handleIdeaChange={props.handleIdeaChange} */
-          /* inputTag1={props.inputTag1}
-          handleTag1Change={props.handleTag1Change} */
-        />
-        {props.inputUpload !== "" ? (
-          <img style={{ height: 300 }} src={props.inputUpload} alt="null" />
-        ) : null}
       </div>
     </div>
   );

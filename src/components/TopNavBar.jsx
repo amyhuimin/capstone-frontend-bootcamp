@@ -21,6 +21,8 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import HomeIcon from "@mui/icons-material/Home";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import LeftNavBar from "./LeftNavBar";
+import Logo from "../FC-logo.png";
+import "./cssFiles/TopNav.css";
 import "./cssFiles/LeftNavBar.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -153,11 +155,7 @@ export default function PrimarySearchAppBar(prop) {
           href="/"
           rel="noreferrer"
         >
-
-
-              <HomeIcon />
-
-
+          <HomeIcon />
         </a>
         <p>Home</p>
       </MenuItem>
@@ -238,14 +236,17 @@ export default function PrimarySearchAppBar(prop) {
               <MenuIcon />
             </IconButton>
           )}
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
             LOGO
-          </Typography>
+          </Typography> */}
+          <div className="logo">
+            <img src={Logo} alt="image" width="160px" height="40px" />
+          </div>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -275,7 +276,7 @@ export default function PrimarySearchAppBar(prop) {
                 color="inherit"
               >
                 {/* <Badge badgeContent={2} color="error"> */}
-                  <HomeIcon />
+                <HomeIcon />
               </IconButton>
             </a>
             <a
@@ -294,7 +295,7 @@ export default function PrimarySearchAppBar(prop) {
                 aria-label="show 4 new mails"
                 color="inherit"
               >
-                  <TipsAndUpdatesIcon />
+                <TipsAndUpdatesIcon />
               </IconButton>
             </a>
             <IconButton
@@ -302,7 +303,7 @@ export default function PrimarySearchAppBar(prop) {
               aria-label="show 4 new mails"
               color="inherit"
             >
-                <MailIcon />
+              <MailIcon />
             </IconButton>
             <IconButton
               size="large"
@@ -310,7 +311,7 @@ export default function PrimarySearchAppBar(prop) {
               color="inherit"
             >
               {/* <Badge badgeContent={17} color="error"> */}
-                <NotificationsIcon />
+              <NotificationsIcon />
               {/* </Badge> */}
             </IconButton>
             <IconButton
