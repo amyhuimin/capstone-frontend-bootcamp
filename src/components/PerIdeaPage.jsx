@@ -14,7 +14,7 @@ import "./cssFiles/PerIdeaPage.css";
 /* import SwipeableViews from "react-swipeable-views"; */
 
 import { useTheme } from "@mui/material/styles";
-import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
+import { styled } from "@mui/material/styles";
 // import Card from "react-bootstrap/Card";
 // import Button from "react-bootstrap/Button";
 // import Box from "@mui/material/Box";
@@ -28,6 +28,17 @@ import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 const BACKEND_URL = "http://localhost:4000";
 
 /* const AutoPlaySwipeableViews = autoPlay(SwipeableViews); */
+
+const TagBox = styled(Box)({
+  display: "table-cell",
+  flexWrap: "wrap",
+  textAlign: "center",
+  verticalAlign: "middle",
+  padding: "0 1.2vw",
+  background: "#f7dfdf",
+  fontSize: "12px",
+  margin: "0 0 8px 0",
+});
 
 const images = [
   {
@@ -93,6 +104,12 @@ const PerIdeaPage = () => {
     setIdeaId(params.IdeaId);
   }
 
+  const date = new Date(idea.createdAt).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
   // Functions for Edit button Popover
   // const handleClick = (event) => {
   //   setAnchorEl(event.currentTarget);
@@ -111,82 +128,184 @@ const PerIdeaPage = () => {
   //   // console.log(`${ideaName} successfully deleted.`);
   //   navigate("/ideas");
   // };
+  console.log("idea", idea.IdeaProfileImgURL);
 
   return (
-    <div className="landingPage">
-      <div className="postFeed">
+    <div className="perIdeaInfo">
+      <div className="ideaDetails">
         <Box
           sx={{
             display: "flex",
             flexWrap: "wrap",
             "& > :not(style)": {
               m: 1,
-              width: 128,
-              height: 128,
+              height: "75vh",
+              maxWidth: "69vw",
             },
           }}
         >
           <Paper elevation={3}>
-            <span className="span.a">
-              <Avatar img={idea.IdeaProfileImgURL} />
-            </span>{" "}
-            <span>{idea.IdeaName} </span>
+            <div className="picAndIdea">
+              <Box>
+                <Avatar
+                  src={idea.IdeaProfileImgURL}
+                  sx={{ margin: 0, width: 52, height: 52 }}
+                />
+              </Box>
+              <div className="ideaName">
+                <p>
+                  <b>{idea.IdeaName}</b>
+                </p>
+              </div>
+            </div>
             <br />
-            {idea.OneLiner}
+            <div className="linerAndDate">
+              <span>{idea.OneLiner}</span>
+              <span>
+                <b>Generated:</b> {date}
+              </span>
+            </div>
+
+            <div className="ideaInfo">
+              <div>
+                <Box
+                  bgcolor="#fcf5d9"
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    marginRight: 1,
+                    marginTop: 0.5,
+                    marginLeft: "1vw",
+                    "& > :not(style)": {
+                      m: 1.5,
+                      width: "27vw",
+                      height: "20vh",
+                    },
+                  }}
+                >
+                  <div>
+                    <span>
+                      <b>Full Description</b>
+                    </span>
+                    <br />
+                    <span>{idea.Descr}</span>
+                  </div>
+                </Box>
+              </div>
+              <div>
+                <Box
+                  bgcolor="#fcf5d9"
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    marginTop: 0.5,
+                    marginRight: 1,
+                    "& > :not(style)": {
+                      m: 1.5,
+                      width: "18vw",
+                      height: "57vh",
+                    },
+                  }}
+                >
+                  <div>
+                    <span>
+                      <b>Purpose</b>
+                    </span>
+                    <br />
+                    <span>{idea.Purpose}</span>
+                    <br />
+                    <br />
+                    <span>
+                      <b>Differentator</b>
+                    </span>
+                    <br />
+                    <span>{idea.Differentator}</span>
+                    <br />
+                    <br />
+                    <span>
+                      <b>Main Feature</b>
+                    </span>
+                    <br />
+                    <span>{idea.MainFeature}</span>
+                    <br />
+                    <br />
+                    <span>
+                      <b>Other Feature</b>
+                    </span>
+                    <br />
+                    <span>{idea.OtherFeature}</span>
+                  </div>
+                </Box>
+              </div>
+              <div>
+                <Box
+                  bgcolor="#fcf5d9"
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    marginTop: 0.5,
+                    marginRight: "1vw",
+                    "& > :not(style)": {
+                      m: 1.5,
+                      width: "15vw",
+                      height: "57vh",
+                    },
+                  }}
+                >
+                  <div className="infoBox3">
+                    <div>
+                      <span>
+                        <b>Target Audience</b>
+                      </span>
+                      <br />
+                      <span>{idea.TargetAud}</span>
+                      <br />
+                      <br />
+                      <span>
+                        <b>Audience Painpoint</b>
+                      </span>
+                      <br />
+                      <span>{idea.UsageReason}</span>
+                    </div>
+                    <div className="tags">
+                      <div>
+                        {idea.Tag1 != null ? (
+                          <TagBox>
+                            <p>{idea.Tag1}</p>
+                          </TagBox>
+                        ) : null}
+                      </div>
+                      <div>
+                        {idea.Tag2 != null ? (
+                          <TagBox>
+                            <p>{idea.Tag2}</p>
+                          </TagBox>
+                        ) : null}
+                      </div>
+                      {idea.Tag3 != null ? (
+                        <TagBox>
+                          <p>{idea.Tag3}</p>
+                        </TagBox>
+                      ) : null}
+                    </div>
+                  </div>
+                </Box>
+              </div>
+            </div>
           </Paper>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 128,
-              height: 128,
-            },
-          }}
-        >
-          <Paper elevation={3} />
-        </Box>
-        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-          <Paper
-            square
-            elevation={0}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              height: 50,
-              pl: 2,
-              bgcolor: "background.default",
-            }}
-          >
-            <Typography>{images[activeStep].label}</Typography>
-          </Paper>
-        </Box>
-        <Box>
-          <CCarousel controls indicators>
-            <CCarouselItem>
-              <CImage
-                className="d-block w-100"
-                src="/images/react.jpg"
-                alt="slide 1"
-              />
-            </CCarouselItem>
-            <CCarouselItem>
-              <CImage
-                className="d-block w-100"
-                src="/images/vue.jpg"
-                alt="slide 2"
-              />
-            </CCarouselItem>
-            <CCarouselItem>
-              <CImage
-                className="d-block w-100"
-                src="/images/angular.jpg"
-                alt="slide 3"
-              />
-            </CCarouselItem>
-          </CCarousel>
+      </div>
+      <div className="newsFeed">
+        <RightNewsBar />
+      </div>
+    </div>
+  );
+};
+
+export default PerIdeaPage;
+
+{
+  /* <Box>
           {images.map((step, index) => (
             <div key={step.label}>
               {Math.abs(activeStep - index) <= 2 ? (
@@ -205,40 +324,5 @@ const PerIdeaPage = () => {
               ) : null}
             </div>
           ))}
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 128,
-              height: 128,
-            },
-          }}
-        >
-          <Paper elevation={3} />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 128,
-              height: 128,
-            },
-          }}
-        >
-          <Paper elevation={3} />
-        </Box>
-      </div>
-      <div className="newsFeed">
-        <RightNewsBar />
-      </div>
-    </div>
-  );
-};
-
-export default PerIdeaPage;
+        </Box> */
+}

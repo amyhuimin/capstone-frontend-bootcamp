@@ -74,7 +74,7 @@ const PostingForm = (props) => {
           <img style={{ height: 300 }} src={props.inputUpload} alt="null" />
         ) : null}
       </div>
-      <div className="tagsSection">
+      <div className="postFormTagFollowing">
         <PostTag1
           inputTag1={props.inputTag1}
           handleTag1Change={props.handleTag1Change}

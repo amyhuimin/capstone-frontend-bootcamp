@@ -3,5 +3,47 @@ span.a {
   width: 100px;
   height: 100px;
   padding: 5px;
-  border: 1px solid blue;  
+  border: 1px solid blue;
+}
+
+.perIdeaInfo {
+  display: flex;
+}
+
+.ideaDetails {
+  margin-top: 0.8vh;
+  width: 69vw;
+}
+
+.picAndIdea {
+  display: flex;
+  padding: 0.9vw;
+  height: 6.2vh;
+}
+
+.ideaName {
+  margin-left: 15px;
+  align-items: center;
+  font-size: large;
+}
+
+.linerAndDate {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 1.3vw;
+  margin-top: -3.8vh;
+}
+
+.ideaInfo {
+  display: inline-flex;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 19vh;
+
+  width: 15vw;
 }

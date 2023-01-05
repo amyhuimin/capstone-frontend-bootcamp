@@ -8,6 +8,11 @@
 
 .tagsSection {
   display: flex;
+  justify-content: space-between;
+}
+
+.postFormTagFollowing {
+  display: flex;
 }
 
 .tagging {

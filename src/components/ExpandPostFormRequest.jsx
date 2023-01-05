@@ -56,6 +56,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   fontSize: 15,
   textTransform: "none",
   justifyContent: "space-between",
+  width: "9vw",
   backgroundColor: grey[200],
   "&:hover": {
     backgroundColor: grey[300],

@@ -19,7 +19,7 @@ const ReadMore = ({ content, link }) => {
         )
       ) : (
         <a
-          style={{ color: "inherit" }}
+          style={{ color: "inherit", textDecoration: "none" }}
           href={link}
           target="_blank"
           rel="noreferrer"
