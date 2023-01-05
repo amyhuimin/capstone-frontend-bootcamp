@@ -31,7 +31,7 @@ function FollowedItems(props) {
         <Avatar img={props.img} />
         <div className="FollowedItemsProps">
           <Detail detailInfo={userName} fontWeight={700} />
-          <Detail detailInfo={props.extra} fontWeight={200} />
+          <Detail detailInfo={props.extra} fontWeight={20} />
         </div>
       </div>
     );

@@ -31,8 +31,9 @@ export default function PostUploadPhotoVideo(props) {
 
   if (isIdle) {
     return (
-      <div>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         <Button
+          style={{ padding: "10px", width: "70%" }}
           aria-label="upload picture"
           component="label"
           sx={{ textTransform: "none" }}
@@ -41,9 +42,9 @@ export default function PostUploadPhotoVideo(props) {
         >
           <input hidden accept="image/*" type="file" />
           <PhotoLibraryIcon sx={{ color: green[300] }} />
-          <span>Photos/Videos</span>
+          <>Photos/Videos</>
         </Button>
-      </div>
+        </div>
     );
   } else {
     return <div>loading</div>;

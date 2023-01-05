@@ -1,5 +1,7 @@
 import * as React from "react";
+import { useRef } from "react";
 import Button from "@mui/material/Button";
+import { Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -7,7 +9,7 @@ import Box from "@mui/material/Box";
 import { useAuth0 } from "@auth0/auth0-react";
 import Typography from "@mui/material/Typography";
 
-import { useTheme } from "@mui/material/styles";
+// import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
 
 import IconButton from "@mui/material/IconButton";
@@ -35,14 +37,11 @@ export default function NewIdeaForm() {
   const [Tag3, setTag3] = React.useState(null);
   const [Status, setStatus] = React.useState("Private");
   const [ImgUrl, setImgURL] = React.useState("");
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState("xs");
-  const styles = {
-    dialogPaper: {
-      minHeight: "80vh",
-      maxHeight: "80vh",
-    },
-  };
+  const [fullWidth] = React.useState(true);
+  const [maxWidth] = React.useState("xs");
+
+
+  const formEl = useRef(null);
 
   const { mutate } = useMutation((data) => PostAnIdea(data), {
     mutationKey: "PostUploadIdea",
@@ -56,11 +55,14 @@ export default function NewIdeaForm() {
 
   const steps = [
     {
-      label: "What is the Idea? (details)",
+      label: "What is the Idea?",
       description: (
-        <DialogContent minHeight={"400px"}>
+        <DialogContent height={400}>
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -75,6 +77,9 @@ export default function NewIdeaForm() {
           />
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -88,6 +93,9 @@ export default function NewIdeaForm() {
           />
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -101,6 +109,9 @@ export default function NewIdeaForm() {
           />
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -118,9 +129,12 @@ export default function NewIdeaForm() {
     {
       label: "What's the uniqueness?",
       description: (
-        <DialogContent minHeight={"400px"}>
+        <DialogContent height={400}>
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -135,6 +149,9 @@ export default function NewIdeaForm() {
           />
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -148,6 +165,9 @@ export default function NewIdeaForm() {
           />
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -161,6 +181,9 @@ export default function NewIdeaForm() {
           />
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -174,6 +197,9 @@ export default function NewIdeaForm() {
           />
           <TextField
             autoFocus
+            InputProps={{
+              style: { backgroundColor: "white" },
+            }}
             id="outlined-basic"
             variant="outlined"
             class="form-control"
@@ -191,20 +217,29 @@ export default function NewIdeaForm() {
     {
       label: "Upload Video & Photos as reference",
       description: (
-        <div>
-          <PostUploadPhotoVideo ImageSetter={setImgURL} />
+        <>
+          <PostUploadPhotoVideo
+            style={{
+              paddingTop: "10px",
+              paddingLeft: "25px",
+            }}
+            ImageSetter={setImgURL}
+          />
           <br />
-          Place holder for upload photos and videos preview
-        </div>
+          {/* Place holder for upload photos and videos preview */}
+        </>
       ),
     },
     {
       label: "Saving the idea",
       description: (
         <div>
-          <DialogContent minHeight={"400px"}>
+          <DialogContent height={400}>
             <TextField
               autoFocus
+              InputProps={{
+                style: { backgroundColor: "white" },
+              }}
               id="outlined-basic"
               variant="outlined"
               class="form-control"
@@ -218,6 +253,9 @@ export default function NewIdeaForm() {
             />
             <TextField
               autoFocus
+              InputProps={{
+                style: { backgroundColor: "white" },
+              }}
               id="outlined-basic"
               variant="outlined"
               class="form-control"
@@ -231,6 +269,9 @@ export default function NewIdeaForm() {
             />
             <TextField
               autoFocus
+              InputProps={{
+                style: { backgroundColor: "white" },
+              }}
               id="outlined-basic"
               variant="outlined"
               class="form-control"
@@ -285,7 +326,7 @@ export default function NewIdeaForm() {
   };
 
   const handleSubmit = async () => {
-    console.log("handlesubmit"+data)
+    // console.log("handlesubmit"+data)
     const newIdea = {
       IdeaId: parseInt(data.Ideas) + 1,
       UserId: data.Id,
@@ -318,13 +359,14 @@ export default function NewIdeaForm() {
     return steps.length;
   };
 
-  const isLastStep = () => {
-    return activeStep === totalSteps() - 1;
-  };
+  const isLastStep = () => activeStep === steps.length - 1;
 
   const handleNext = () => {
-    const newActiveStep = isLastStep() ? steps.length : activeStep + 1;
-    setActiveStep(newActiveStep);
+    if (formEl.current.checkValidity()) {
+      formEl.current.reset();
+      const newActiveStep = isLastStep() ? steps.length : activeStep + 1;
+      setActiveStep(newActiveStep);
+    }
   };
 
   const handleBack = () => {
@@ -369,8 +411,7 @@ export default function NewIdeaForm() {
           maxWidth={maxWidth}
           PaperProps={{
             sx: {
-              // width: "80%",
-              minHeight: 450,
+              height: 480,
             },
             style: {
               backgroundColor: "#FFCE35",
@@ -395,7 +436,7 @@ export default function NewIdeaForm() {
           PaperProps={{
             sx: {
               // width: "80%",
-              minHeight: 450,
+              minHeight: 480,
             },
             style: {
               backgroundColor: "#FFCE35",
@@ -404,16 +445,25 @@ export default function NewIdeaForm() {
           open={open}
           onClose={handleClose}
         >
-          <Typography>{steps[activeStep].label}</Typography>
+          <Typography
+            style={{
+              fontWeight: "bold",
+              paddingTop: "10px",
+              paddingLeft: "25px",
+            }}
+          >
+            {steps[activeStep].label}
+          </Typography>
 
           {steps[activeStep].description}
           <MobileStepper
             variant="dots"
             steps={4}
-            position="static"
-            sx={{ flexGrow: 1 }, {height: "20px"}}
+            position="absolute"
+            bottom={0}
+            sx={({ flexGrow: 1 }, { height: "20px" })}
             activeStep={activeStep}
-            style= {{backgroundColor: "#FFCE35"}}
+            style={{ backgroundColor: "#FFCE35" }}
           />
 
           <React.Fragment>
@@ -428,7 +478,7 @@ export default function NewIdeaForm() {
                 Back
               </Button>
               <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Preview Post" : "Next"}
+                {activeStep === steps.length - 1 ? "Upload Post" : "Next"}
               </Button>
 
               <Box sx={{ flex: "1 1 auto" }} />
@@ -436,6 +486,7 @@ export default function NewIdeaForm() {
           </React.Fragment>
         </Dialog>
       )}
+      <form ref={formEl} />
     </>
   );
 }

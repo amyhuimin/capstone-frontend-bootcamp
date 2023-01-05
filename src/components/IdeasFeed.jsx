@@ -35,10 +35,11 @@ function IdeasFeed(props) {
 
   if (myIdeas !== null) {
     console.log(myIdeas);
+    const reversedMyIdeas = myIdeas.reverse();
     return (
       <div>
         {/* <h1 style={{ marginLeft: 10 }}>My Ideas</h1> */}
-        {myIdeas.map((item) => {
+        {reversedMyIdeas.map((item) => {
           console.log("items" + item);
           return (
             <IdeaCard
