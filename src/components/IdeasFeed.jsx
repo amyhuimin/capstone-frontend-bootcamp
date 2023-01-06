@@ -40,7 +40,7 @@ function IdeasFeed(props) {
       <div>
         {/* <h1 style={{ marginLeft: 10 }}>My Ideas</h1> */}
         {reversedMyIdeas.map((item) => {
-          console.log("items" + item);
+          // console.log("items" + item);
           return (
             <IdeaCard
               key={item.Id}
