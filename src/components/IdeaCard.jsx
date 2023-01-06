@@ -35,7 +35,8 @@ function IdeaCard(props) {
   useEffect(() => checkUser(), []);
   // console.log(userName)
   if (userName !== "") {
-    // console.log("props.name" + props.name);
+    console.log("props.key" + props.key);
+    console.log("props.ideaName" + props.ideaName);
     return (
       <div className="postCard">
         <Card className="cards">

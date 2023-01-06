@@ -43,7 +43,7 @@ function IdeasFeed(props) {
           console.log("items" + item);
           return (
             <IdeaCard
-              key={item.id}
+              key={item.Id}
               name={item.UserId}
               img={item.IdeaProfileImgURL}
               ideaName={item.IdeaName}

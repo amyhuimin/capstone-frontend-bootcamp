@@ -341,7 +341,7 @@ export default function NewIdeaForm() {
       TargetAud: TargetAud,
       UsageReason: UsageReason,
       ImgURL: ImgUrl,
-      status: Status,
+      Status: Status,
       Tag1: Tag1,
       Tag2: Tag2,
       Tag3: Tag3,
