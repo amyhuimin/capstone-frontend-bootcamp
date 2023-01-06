@@ -223,6 +223,7 @@ export default function NewIdeaForm() {
               paddingTop: "10px",
               paddingLeft: "25px",
             }}
+            
             ImageSetter={setImgURL}
           />
           <br />

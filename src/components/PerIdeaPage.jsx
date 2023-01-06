@@ -11,10 +11,16 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import RightNewsBar from "./RightNewsBar";
 import "./cssFiles/PerIdeaPage.css";
-/* import SwipeableViews from "react-swipeable-views"; */
-
 import { useTheme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
+import { useMutation } from "@tanstack/react-query";
+import { getCurrentUser, getUserIdeas } from "../Queries";
+import { useAuth0 } from "@auth0/auth0-react";
+import { ideaData } from "../IdeaSeedData";
+import { Carousel } from "react-responsive-carousel";
+import "./cssFiles/Carousel.css";
+import { green } from "@mui/material/colors";
+
 // import Card from "react-bootstrap/Card";
 // import Button from "react-bootstrap/Button";
 // import Box from "@mui/material/Box";
@@ -40,38 +46,19 @@ const TagBox = styled(Box)({
   margin: "0 0 8px 0",
 });
 
-const images = [
-  {
-    label: "San Francisco – Oakland Bay Bridge, United States",
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    label: "Bird",
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    label: "Bali, Indonesia",
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
-  },
-  {
-    label: "Goč, Serbia",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-];
-
 const PerIdeaPage = () => {
   const [ideaId, setIdeaId] = useState();
   const [idea, setIdea] = useState({});
+  const [userIdeas, setUserIdeas] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
-
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
+  /* const maxSteps = images.length; */
+  const [userId, setUserId] = useState("");
+  const [userData, setUserData] = useState([]);
+  const [userEmail, setUUID] = useState("");
+  const { user, getAccessTokenSilently } = useAuth0();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -83,6 +70,39 @@ const PerIdeaPage = () => {
 
   const handleStepChange = (step) => {
     setActiveStep(step);
+  };
+
+  const { mutate } = useMutation(
+    (props) => getCurrentUser(props), //choose a function for mutate to use
+    {
+      //mutation settings
+      retry: false,
+      onSuccess: (data) => {
+        setUserId(data.Id);
+        setUserData(data);
+      },
+    }
+  );
+
+  useEffect(() => {
+    if (user !== undefined) {
+      setUUID(user.email);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (userEmail !== "") {
+      getUserInfo();
+    }
+  }, [userEmail]);
+
+  const getUserInfo = async () => {
+    const accessToken = await getAccessTokenSilently({
+      audience: `https://Proj3/api`,
+      scope: "read:current_user",
+    });
+
+    mutate({ data: userEmail, accessToken: accessToken }); //Props for the function
   };
 
   useEffect(() => {
@@ -99,7 +119,7 @@ const PerIdeaPage = () => {
 
   // Update listing ID in state if needed to trigger data retrieval
   const params = useParams();
-  console.log(params);
+  console.log("params", params);
   if (ideaId !== params.IdeaId) {
     setIdeaId(params.IdeaId);
   }
@@ -128,7 +148,8 @@ const PerIdeaPage = () => {
   //   // console.log(`${ideaName} successfully deleted.`);
   //   navigate("/ideas");
   // };
-  console.log("idea", idea.IdeaProfileImgURL);
+
+  console.log("idea", idea);
 
   return (
     <div className="perIdeaInfo">
@@ -139,7 +160,7 @@ const PerIdeaPage = () => {
             flexWrap: "wrap",
             "& > :not(style)": {
               m: 1,
-              height: "75vh",
+              height: "80vh",
               maxWidth: "69vw",
             },
           }}
@@ -162,7 +183,7 @@ const PerIdeaPage = () => {
             <div className="linerAndDate">
               <span>{idea.OneLiner}</span>
               <span>
-                <b>Generated:</b> {date}
+                <b>Generated:</b> {date !== null ? date : null}
               </span>
             </div>
 
@@ -191,6 +212,19 @@ const PerIdeaPage = () => {
                     <span>{idea.Descr}</span>
                   </div>
                 </Box>
+                <div className="photosArea">
+                  <Box>
+                    {idea.ImgURL != null ? (
+                      <Carousel showThumbs={false}>
+                        <div className="photoCaro">
+                          <img src={idea.ImgURL} alt="image" />
+                        </div>
+                      </Carousel>
+                    ) : (
+                      <div className="nullCarousel">No Image Uploaded</div>
+                    )}
+                  </Box>
+                </div>
               </div>
               <div>
                 <Box
@@ -303,26 +337,3 @@ const PerIdeaPage = () => {
 };
 
 export default PerIdeaPage;
-
-{
-  /* <Box>
-          {images.map((step, index) => (
-            <div key={step.label}>
-              {Math.abs(activeStep - index) <= 2 ? (
-                <Box
-                  component="img"
-                  sx={{
-                    height: 255,
-                    display: "block",
-                    maxWidth: 400,
-                    overflow: "hidden",
-                    width: "100%",
-                  }}
-                  src={step.imgPath}
-                  alt={step.label}
-                />
-              ) : null}
-            </div>
-          ))}
-        </Box> */
-}

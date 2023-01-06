@@ -5,20 +5,18 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { ideaData } from "../IdeaSeedData.js";
+import { useQuery } from "@tanstack/react-query";
+import { getUserIdeas } from "../Queries.js";
 
 export default function PostIdeaList(props) {
-  const [menu, setMenu] = useState();
+  const { data } = useQuery(["ideaList"], () => getUserIdeas());
 
   const handleChange = (event) => {
-    setMenu(event.target.value);
-    /* props.handleIdeaChange(event.target.value); */
+    props.handleIdeaChange(event.target.value);
   };
 
-  useEffect(() => {
-    props.handleIdeaChange(menu);
-  }, [menu]);
-
-  const newArray = Object.values(ideaData);
+  console.log("ideaData", ideaData);
+  console.log("idea", data);
 
   return (
     <div>
@@ -27,14 +25,13 @@ export default function PostIdeaList(props) {
           value={props.inputIdea}
           onChange={handleChange}
           displayEmpty
-          defaultValue=""
           inputProps={{ "aria-label": "Without label" }}
           sx={{ width: "300px" }}
         >
           <MenuItem value="">
             <em>Which idea are you posting for</em>
           </MenuItem>
-          {newArray.map((item) => {
+          {ideaData.map((item) => {
             return (
               <MenuItem key={item.Id} value={item.ideaName}>
                 {item.ideaName}

@@ -47,3 +47,18 @@ span.a {
 
   width: 15vw;
 }
+
+.photosArea {
+  margin: 0.5vw 0 0 1vw;
+  width: 28.6vw;
+  height: 36vh;
+}
+
+.nullCarousel {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 28.6vw;
+  height: 36vh;
+  background-color: #e7e7e7;
+}
