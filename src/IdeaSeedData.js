@@ -5,8 +5,8 @@ const ideaData = [
     userId: 5,
     ideaProfileImgURL:
       "https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
-    ideaName: "Community app",
-    oneLiner: "Helping ideas to grow from 0 to 1 through a community",
+    ideaName: "Food Blogging App",
+    oneLiner: "Like instagram but only for food",
     descr:
       "A community of people helping each other to develop their ideas through providing comments, opinions, connections to build the idea into an actual business as the end goal",
     purpose:
@@ -33,8 +33,9 @@ const ideaData = [
     ideaId: 2,
     ideaProfileImgURL:
       "https://images.unsplash.com/photo-1581557991964-125469da3b8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1666&q=80",
-    ideaName: "Toy with human interaction",
-    oneLiner: "Making your favourite toy a true companion",
+    ideaName: "English Learning App",
+    oneLiner:
+      "An app for non-English speakers to learn pronunciation of English words",
     descr:
       "Developing and installing an small device into the the favourite toy that is AI powered with neural language processing which can recognise human interactions and offer a verbal response ",
     purpose:
@@ -61,8 +62,8 @@ const ideaData = [
     ideaId: 3,
     ideaProfileImgURL:
       "https://images.unsplash.com/photo-1668902610778-96403019a7f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
-    ideaName: "Idea idea idea idea idea idea idea idea ",
-    oneLiner: "Oneliner oneliner oneliner oneliner oneliner oneliner oneliner",
+    ideaName: "President 8 Ball",
+    oneLiner: "Let the president tell your future",
     descr:
       "text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text ",
     purpose:
